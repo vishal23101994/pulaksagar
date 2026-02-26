@@ -237,7 +237,7 @@ export default function PulakManchPage() {
 
             <div className="col-span-full flex justify-center mt-6">
               <a
-                href="/organization/pulak-manch/register"
+                href="https://jinsharnammedia.com/organization/pulak-manch/register"
                 className="
                   bg-gradient-to-r
                   from-yellow-500 via-amber-500 to-yellow-400
