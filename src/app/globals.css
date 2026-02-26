@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+:root {
+  --bg-main: #0F0F0F;
+  --bg-section: #1A1A1A;
+  --bg-card: #1E1E1E;
+
+  --text-primary: #F5F5F5;
+  --text-secondary: #BFBFBF;
+
+  --accent-gold: #C6A75E;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: "Lora", serif;
+}
+
+.glow {
+  box-shadow: 0 0 25px rgba(236, 164, 0, 0.35);
+}
+
+strong {
+  color: #D4AF37;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(212,175,55,0.4);
+}
+/* ================= HERO BACKGROUND ================= */
+
+.divine-hero-bg {
+  background: radial-gradient(
+      circle at 70% 40%,
+      rgba(198,167,94,0.15),
+      transparent 40%
+    ),
+    linear-gradient(to bottom, #0F0F0F, #111111);
+}
+
+/* ================= FULL HERO RAYS ================= */
+
+.full-hero-rays {
+  border-radius: 50%;
+
+  background: repeating-conic-gradient(
+    rgba(255,255,255,0.08) 0deg,
+    rgba(255,255,255,0.03) 4deg,
+    transparent 8deg,
+    transparent 20deg
+  );
+
+  mask: radial-gradient(circle, black 55%, transparent 70%);
+  -webkit-mask: radial-gradient(circle, black 55%, transparent 70%);
+
+  animation: rotateClockwiseSlow 120s linear infinite;
+}
+
+/* ================= ROTATION ================= */
+
+@keyframes rotateClockwiseSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-rotateClockwiseSlow {
+  animation: rotateClockwiseSlow 40s linear infinite;
+}
+
+/* ================= SUN RAYS ================= */
+
+.sun-rays {
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    rgba(255,255,255,0.9) 0deg,
+    rgba(255,255,255,0.5) 4deg,
+    transparent 8deg,
+    transparent 18deg
+  );
+  filter: blur(8px);
+  opacity: 0.8;
+}
+
+/* ================= FIRE RING ================= */
+
+.energy-fire-outer {
+  background: conic-gradient(
+    from 0deg,
+    #fff176,
+    #ffb300,
+    #ff6f00,
+    #ffb300,
+    #fff176
+  );
+
+  mask: radial-gradient(circle, transparent 70%, black 71%);
+  -webkit-mask: radial-gradient(circle, transparent 70%, black 71%);
+
+  filter: blur(2px);
+  box-shadow:
+    0 0 20px #ffb300,
+    0 0 60px #ff6f00,
+    0 0 120px rgba(255,120,0,0.6);
+}
+
+.energy-lava-ring {
+  background: conic-gradient(
+    from 0deg,
+    #ff9800,
+    #ff5722,
+    #ff9800,
+    #ffd54f,
+    #ff9800,
+    #ff5722
+  );
+
+  mask: radial-gradient(circle, transparent 62%, black 63%);
+  -webkit-mask: radial-gradient(circle, transparent 62%, black 63%);
+
+  filter: blur(1.5px);
+  box-shadow:
+    0 0 30px #ff9800,
+    0 0 80px #ff5722,
+    inset 0 0 25px #ffd54f;
+}
+
+.energy-inner-glow {
+  background: radial-gradient(circle,
+    rgba(255,230,120,0.9) 55%,
+    rgba(255,180,0,0.7) 65%,
+    rgba(255,140,0,0.4) 75%,
+    transparent 85%
+  );
+
+  filter: blur(8px);
+}
+
+@keyframes energyRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-energyRotate {
+  animation: energyRotate 18s linear infinite;
+}
+
+/* ================= GOLD PARTICLES ================= */
+
+.gold-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #fff8c6, #ffd700);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: floatUp 6s linear infinite;
+  box-shadow: 0 0 8px rgba(255,215,0,0.8);
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+/* ================= HERO STARS ================= */
+
+.hero-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, #fff8c6, #ffd700);
+  border-radius: 50%;
+  animation: floatStar 8s linear infinite;
+  box-shadow: 0 0 10px rgba(255,215,0,0.8);
+}
+
+@keyframes floatStar {
+  0% { transform: translateY(0px); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-60px); opacity: 0; }
+}
+
+@keyframes floatSparkle {
+  0% { transform: translateY(0px); opacity: 0.6; }
+  50% { transform: translateY(-10px); opacity: 1; }
+  100% { transform: translateY(0px); opacity: 0.6; }
+}
+
+.sparkle {
+  animation: floatSparkle 4s ease-in-out infinite;
+}
+
+/* ===== News Ticker Marquee Animation ===== */
+
+@keyframes jm-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-jm-marquee {
+  animation: jm-marquee 35s linear infinite;
+}
