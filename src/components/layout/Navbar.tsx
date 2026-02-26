@@ -13,9 +13,10 @@ export default function Navbar() {
   const [mediaOpen, setMediaOpen] = useState(false);
   const [orgOpen, setOrgOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileMediaOpen, setMobileMediaOpen] = useState(false);
+  const [mobileOrgOpen, setMobileOrgOpen] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  /* Scroll Detection */
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
@@ -34,49 +35,36 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll Progress Bar */}
+      {/* Scroll Progress */}
       <div
         className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-[#B8860B] via-[#F5E6A5] to-[#B8860B] z-[60]"
         style={{ width: `${progress}%` }}
       />
 
       <nav className="fixed top-0 left-0 w-full z-50">
-
         {/* Background */}
         <div
           className={`absolute inset-0 transition-all duration-500 ${
             scrolled
-              ? "bg-black/80 backdrop-blur-xl"
-              : "bg-black/40 backdrop-blur-md"
+              ? "bg-black/90 backdrop-blur-xl"
+              : "bg-black/70 backdrop-blur-md"
           }`}
         />
 
-        {/* Golden bottom border glow */}
-        <div className="absolute bottom-0 left-0 w-full h-[2px] 
-          bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent 
-          opacity-70"
-        />
+        {/* Bottom Glow */}
+        <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-70" />
 
         <div
-          className={`relative max-w-7xl mx-auto px-8 flex justify-between items-center transition-all duration-500 ${
-            scrolled ? "h-[75px]" : "h-[95px]"
-          }`}
+          className={`relative max-w-7xl mx-auto px-4 md:px-8 
+          flex justify-between items-center transition-all duration-500
+          ${scrolled ? "h-[70px]" : "h-[85px] md:h-[95px]"}`}
         >
           {/* LOGO */}
-          <Link href="/" className="flex items-center gap-4 group">
+          <Link href="/" className="flex items-center gap-3 md:gap-4 group">
+            <div className="relative w-14 h-14 md:w-20 md:h-20 flex items-center justify-center">
+              <div className="absolute inset-[-8px] md:inset-[-12px] rounded-full bg-[#FFD97A]/25 blur-xl md:blur-2xl opacity-80" />
 
-            <div className="relative w-20 h-20 flex items-center justify-center">
-
-              {/* Soft Golden Glow Behind */}
-              <div className="absolute inset-[-12px] rounded-full 
-                bg-[#FFD97A]/25 blur-2xl opacity-80"
-              />
-
-              {/* Main Image Container */}
-              <div className="relative w-16 h-16 rounded-full overflow-hidden 
-                border-[3px] border-[#FFD97A]
-                shadow-[0_0_25px_rgba(255,215,120,0.6)]"
-              >
+              <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-[2px] md:border-[3px] border-[#FFD97A] shadow-[0_0_20px_rgba(255,215,120,0.6)]">
                 <Image
                   src="/images/img8.jpeg"
                   alt="Pulak Sagar Ji"
@@ -84,24 +72,19 @@ export default function Navbar() {
                   className="object-cover"
                 />
               </div>
-
             </div>
 
-            <div className="font-serif text-[28px] font-semibold tracking-wide
-              bg-gradient-to-r from-[#FFD97A] via-[#FFF1B8] to-[#FFD97A]
-              bg-clip-text text-transparent
-              drop-shadow-[0_0_20px_rgba(255,215,120,0.6)]">
+            <div className="font-serif text-[15px] sm:text-[18px] md:text-[28px] font-semibold tracking-wide bg-gradient-to-r from-[#FFD97A] via-[#FFF1B8] to-[#FFD97A] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,215,120,0.6)] leading-tight max-w-[180px] sm:max-w-none">
               Pulak Sagar Ji Gurudev
             </div>
           </Link>
 
-          {/* DESKTOP NAV */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6 text-[15px]">
-
             <NavItem href="/" label="Home" pathname={pathname} />
             <NavItem href="/about" label="About" pathname={pathname} />
 
-            {/* MEDIA */}
+            {/* Media */}
             <div
               className="relative"
               onMouseEnter={() => setMediaOpen(true)}
@@ -109,10 +92,7 @@ export default function Navbar() {
             >
               <button className="flex items-center gap-1 font-medium text-amber-200 hover:text-[#FFD97A] transition">
                 Media
-                <ChevronDown
-                  size={16}
-                  className={`transition ${mediaOpen ? "rotate-180" : ""}`}
-                />
+                <ChevronDown size={16} className={mediaOpen ? "rotate-180 transition" : "transition"} />
               </button>
 
               <AnimatePresence>
@@ -125,7 +105,7 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* ORGANIZATION */}
+            {/* Organization */}
             <div
               className="relative"
               onMouseEnter={() => setOrgOpen(true)}
@@ -133,17 +113,14 @@ export default function Navbar() {
             >
               <button className="flex items-center gap-1 font-medium text-amber-200 hover:text-[#FFD97A] transition">
                 Organization
-                <ChevronDown
-                  size={16}
-                  className={`transition ${orgOpen ? "rotate-180" : ""}`}
-                />
+                <ChevronDown size={16} className={orgOpen ? "rotate-180 transition" : "transition"} />
               </button>
 
               <AnimatePresence>
                 {orgOpen && (
                   <DropdownMenu>
                     <DropdownItem href="/organization/jinsharnam-tirth" label="Jinsharnam Tirth" />
-                    {/*<DropdownItem href="/organization/pulak-manch" label="Pulak Manch" />*/}
+                    <DropdownItem href="/organization/pulak-manch" label="Pulak Manch" />
                   </DropdownMenu>
                 )}
               </AnimatePresence>
@@ -154,9 +131,9 @@ export default function Navbar() {
             <NavItem href="/contact" label="Contact" pathname={pathname} />
           </div>
 
-          {/* MOBILE BUTTON */}
+          {/* Mobile Button */}
           <button
-            className="md:hidden text-[#3A2A00]"
+            className="md:hidden text-[#FFD97A]"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={28} /> : <Menu size={28} />}
@@ -167,17 +144,53 @@ export default function Navbar() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-gradient-to-b from-[#F5E6A5] to-[#D4AF37] border-t border-[#B8860B]/30"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-black border-t border-[#D4AF37]/30 overflow-hidden"
             >
-              <div className="flex flex-col px-6 py-6 gap-4 text-[#3A2A00]">
-                <MobileItem href="/" label="Home" />
-                <MobileItem href="/about" label="About" />
-                <MobileItem href="/gallery" label="Gallery" />
-                <MobileItem href="/achievements" label="Achievements" />
-                <MobileItem href="/contact" label="Contact" />
+              <div className="flex flex-col px-6 py-6 gap-5 text-[#FFD97A]">
+
+                <MobileItem href="/" label="Home" onClick={() => setMobileOpen(false)} />
+                <MobileItem href="/about" label="About" onClick={() => setMobileOpen(false)} />
+
+                {/* Media */}
+                <button
+                  onClick={() => setMobileMediaOpen(!mobileMediaOpen)}
+                  className="flex justify-between items-center text-[#FFD97A]"
+                >
+                  Media
+                  <ChevronDown size={18} className={mobileMediaOpen ? "rotate-180 transition" : "transition"} />
+                </button>
+
+                {mobileMediaOpen && (
+                  <div className="pl-4 flex flex-col gap-3">
+                    <MobileItem href="/media/pravachan" label="Pravachan" onClick={() => setMobileOpen(false)} />
+                    <MobileItem href="/media/bhajan" label="Bhajan" onClick={() => setMobileOpen(false)} />
+                  </div>
+                )}
+
+                {/* Organization */}
+                <button
+                  onClick={() => setMobileOrgOpen(!mobileOrgOpen)}
+                  className="flex justify-between items-center text-[#FFD97A]"
+                >
+                  Organization
+                  <ChevronDown size={18} className={mobileOrgOpen ? "rotate-180 transition" : "transition"} />
+                </button>
+
+                {mobileOrgOpen && (
+                  <div className="pl-4 flex flex-col gap-3">
+                    <MobileItem href="/organization/jinsharnam-tirth" label="Jinsharnam Tirth" onClick={() => setMobileOpen(false)} />
+                    <MobileItem href="/organization/pulak-manch" label="Pulak Manch" onClick={() => setMobileOpen(false)} />
+                  </div>
+                )}
+
+                <MobileItem href="/gallery" label="Gallery" onClick={() => setMobileOpen(false)} />
+                <MobileItem href="/achievements" label="Achievements" onClick={() => setMobileOpen(false)} />
+                <MobileItem href="/contact" label="Contact" onClick={() => setMobileOpen(false)} />
+
               </div>
             </motion.div>
           )}
@@ -187,27 +200,18 @@ export default function Navbar() {
   );
 }
 
-/* NAV ITEM */
+/* Desktop Nav Item */
 function NavItem({ href, label, pathname }: any) {
   const isActive = pathname === href;
 
   return (
     <Link href={href} className="relative group font-medium text-amber-200">
-      <span
-        className={`transition-all duration-300 ${
-          isActive
-            ? "text-[#FFD97A]"
-            : "group-hover:text-[#FFD97A]"
-        }`}
-      >
+      <span className={isActive ? "text-[#FFD97A]" : "group-hover:text-[#FFD97A] transition"}>
         {label}
       </span>
 
-      {/* Glow underline */}
       <span
-        className={`absolute left-0 -bottom-2 h-[2px] 
-        bg-gradient-to-r from-[#FFD97A] to-[#F5C85C]
-        transition-all duration-300 ${
+        className={`absolute left-0 -bottom-2 h-[2px] bg-gradient-to-r from-[#FFD97A] to-[#F5C85C] transition-all duration-300 ${
           isActive ? "w-full shadow-[0_0_10px_#FFD97A]" : "w-0 group-hover:w-full"
         }`}
       />
@@ -215,7 +219,7 @@ function NavItem({ href, label, pathname }: any) {
   );
 }
 
-/* DROPDOWN MENU */
+/* Dropdown Menu */
 function DropdownMenu({ children }: any) {
   return (
     <motion.div
@@ -223,37 +227,33 @@ function DropdownMenu({ children }: any) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 15 }}
       transition={{ duration: 0.25 }}
-      className="absolute top-12 left-0 w-56
-      bg-black/90 backdrop-blur-xl
-      border border-[#D4AF37]/40
-      rounded-3xl
-      shadow-[0_30px_80px_rgba(212,175,55,0.35)]"
+      className="absolute top-12 left-0 w-56 bg-black/90 backdrop-blur-xl border border-[#D4AF37]/40 rounded-3xl shadow-[0_30px_80px_rgba(212,175,55,0.35)]"
     >
       {children}
     </motion.div>
   );
 }
 
-/* DROPDOWN ITEM */
+/* Dropdown Item */
 function DropdownItem({ href, label }: any) {
   return (
     <Link
       href={href}
-      className="block px-6 py-3 text-amber-200 
-      hover:bg-[#D4AF37]/10 
-      hover:text-[#FFD97A] 
-      rounded-3xl
-      transition font-medium"
+      className="block px-6 py-3 text-amber-200 hover:bg-[#D4AF37]/10 hover:text-[#FFD97A] rounded-3xl transition font-medium"
     >
       {label}
     </Link>
   );
 }
 
-/* MOBILE ITEM */
-function MobileItem({ href, label }: any) {
+/* Mobile Item */
+function MobileItem({ href, label, onClick }: any) {
   return (
-    <Link href={href} className="text-lg hover:text-black transition">
+    <Link
+      href={href}
+      onClick={onClick}
+      className="text-base font-medium text-[#FFD97A] hover:text-white transition"
+    >
       {label}
     </Link>
   );

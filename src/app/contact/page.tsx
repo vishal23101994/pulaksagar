@@ -239,8 +239,8 @@ export default function ContactPage() {
 
                   <p className="text-sm leading-relaxed text-amber-200">
                     P-75, Street No 5,
-                    Bihari Colony Extension <br />
-                    Shahdara, Delhi – 110032, India
+                    Bihari Colony Extension, <br />Bihari Colony,
+                    Shahdara, Delhi – 110032 <br /> India
                   </p>
                 </div>
               </div>

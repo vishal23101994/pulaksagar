@@ -18,9 +18,48 @@ import {
   Users,
 } from "lucide-react";
 
+/* ---------------- Premium Sparkle Background ---------------- */
+function Sparkles() {
+  const sparkles = Array.from({ length: 100 });
+
+  return (
+    <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
+      {sparkles.map((_, i) => {
+        const size = Math.random() * 3 + 1;
+
+        return (
+          <span
+            key={i}
+            className="absolute rounded-full bg-[#D4AF37]"
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: 0.7,
+              boxShadow: "0 0 10px rgba(212,175,55,0.8)",
+              animation: `float ${4 + Math.random() * 6}s ease-in-out infinite`,
+            }}
+          />
+        );
+      })}
+
+      <style jsx>{`
+        @keyframes float {
+          0% { transform: translateY(0px); opacity: 0.6; }
+          50% { transform: translateY(-10px); opacity: 1; }
+          100% { transform: translateY(0px); opacity: 0.6; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 export default function AboutPage() {
   return (
     <main className="relative bg-gradient-to-b from-[#0F0F0F] via-[#141414] to-[#0F0F0F] text-[#E8E6E3] overflow-hidden">
+      {/* Sparkles */}
+      <Sparkles />
 
       {/* Om Watermark */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-[0.04] text-[320px] font-serif text-[#C6A75E] select-none">
@@ -28,7 +67,7 @@ export default function AboutPage() {
       </div>
 
       {/* ================= HERO ================= */}
-      <section className="relative max-w-7xl mx-auto px-6 pt-36 pb-28 z-10">
+      <section className="relative max-w-7xl mx-auto px-5 sm:px-6 pt-28 sm:pt-36 pb-20 sm:pb-28 z-10">
 
         {/* Golden Aura Beam */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-full bg-gradient-to-b from-[#C6A75E]/20 via-transparent to-[#C6A75E]/10 blur-3xl pointer-events-none" />
@@ -40,7 +79,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-5xl md:text-6xl font-serif leading-tight bg-gradient-to-r from-[#C6A75E] via-[#F5E6B2] to-[#C6A75E] bg-clip-text text-transparent drop-shadow-[0_5px_20px_rgba(198,167,94,0.3)]">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif leading-tight bg-gradient-to-r from-[#C6A75E] via-[#F5E6B2] to-[#C6A75E] bg-clip-text text-transparent drop-shadow-[0_5px_20px_rgba(198,167,94,0.3)]">
               Rashtrasant Manogyacharya <br />
               Shree Pulak Sagar Ji Gurudev
             </h1>
@@ -51,7 +90,7 @@ export default function AboutPage() {
               the eternal wisdom of Jain Dharma.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-5">
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-5">
               <Link
                 href="/pravachan"
                 className="rounded-full bg-gradient-to-r from-[#C6A75E] to-[#E0C97A] px-8 py-3 font-semibold text-black shadow-lg hover:scale-105 hover:shadow-[0_0_25px_rgba(198,167,94,0.6)] transition"
@@ -75,7 +114,7 @@ export default function AboutPage() {
             transition={{ duration: 1 }}
             className="relative flex justify-center"
           >
-            <div className="absolute w-[500px] h-[500px] bg-[#C6A75E]/20 blur-3xl rounded-full"></div>
+            <div className="absolute w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-[#C6A75E]/20 blur-3xl rounded-full"></div>
 
             <div className="relative p-4 rounded-[40px] bg-gradient-to-br from-[#FFF6C5] to-[#D4AF37] shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
               <Image
@@ -99,7 +138,7 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative rounded-3xl bg-gradient-to-b from-[#1A1A1A] to-[#111111] border border-[#C6A75E]/20 p-10 shadow-[0_25px_80px_rgba(0,0,0,0.6)]"
+          className="relative rounded-3xl bg-gradient-to-b from-[#1A1A1A] to-[#111111] border border-[#C6A75E]/20 p-6 sm:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.6)]"
         >
           <h2 className="text-4xl md:text-5xl font-serif text-[#C6A75E] text-center mb-10">
             Biography
@@ -195,7 +234,7 @@ export default function AboutPage() {
           Diksha Journey
         </h2>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {[
             { title: "Brahmacharya Vrat", date: "27 Jan 1993", icon: <Shield /> },
             { title: "Alok Diksha", date: "27 Jan 1994", icon: <Swords /> },

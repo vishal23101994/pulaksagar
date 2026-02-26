@@ -27,7 +27,7 @@ export default function Footer() {
       name: "Organization",
       subLinks: [
         { name: "Jinsharnam Tirth", path: "/organization/jinsharnam-tirth" },
-        // { name: "Pulak Manch", path: "/organization/pulak-manch" },
+        { name: "Pulak Manch", path: "/organization/pulak-manch" },
       ],
     },
     {
@@ -39,25 +39,28 @@ export default function Footer() {
     },
   ];
 
-  const socialLinks = [
-    { icon: <FaYoutube />, url: "#", color: "#FF0000" },
-    { icon: <FaFacebookF />, url: "#", color: "#1877F2" },
-    { icon: <FaInstagram />, url: "#", color: "#E1306C" },
-    { icon: <FaTwitter />, url: "#", color: "#1DA1F2" },
-    { icon: <FaLinkedinIn />, url: "#", color: "#0077B5" },
-    { icon: <FaTelegramPlane />, url: "#", color: "#0088cc" },
-    { icon: <FaPinterestP />, url: "#", color: "#E60023" },
-    { icon: <FaBloggerB />, url: "#", color: "#FF5722" },
+  const socialLinks: {
+    icon: React.ReactNode;
+    url: string;
+  }[] = [
+    { icon: <FaYoutube className="text-[#FF0000]" />, url: "https://youtube.com/@jinsharnammedia?si=7H1TrEVFK6rjI5qu" },
+    { icon: <FaFacebookF className="text-[#1877F2]" />, url: "https://www.facebook.com/Jinsharnammedia" },
+    { icon: <FaInstagram className="text-[#E1306C]" />, url: "https://www.instagram.com/jinsharnam_media" },
+    { icon: <FaTwitter className="text-white" />, url: "https://x.com/jinsharnamedia" },
+    { icon: <FaLinkedinIn className="text-[#0077B5]" />, url: "https://www.linkedin.com/company/jinsharnammedia/" },
+    { icon: <FaTelegramPlane className="text-[#0088cc]" />, url: "https://t.me/Jinsharnam_Media" },
+    { icon: <FaPinterestP className="text-[#E60023]" />, url: "https://www.pinterest.com/jinsharnam/" },
+    { icon: <FaBloggerB className="text-[#FF5722]" />, url: "https://jindharnam.blogspot.com/" },
   ];
 
   return (
-    <footer className="bg-black border-t border-[#D4AF37]/30 text-amber-100 pt-14">
+    <footer className="bg-black border-t border-[#D4AF37]/30 text-amber-100 pt-12 md:pt-14">
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 space-y-10">
 
         {/* 🌼 1. Logo + Message */}
         <div className="flex flex-col md:flex-row items-center md:items-start 
-                        justify-between gap-6 border-b border-[#D4AF37]/20 pb-8
+                        justify-between gap-8 border-b border-[#D4AF37]/20 pb-8
                         text-center md:text-left">
 
           <div className="flex flex-col sm:flex-row items-center gap-5">
@@ -77,12 +80,12 @@ export default function Footer() {
             </div>
 
             <div>
-              <h2 className="font-serif text-2xl font-semibold 
+              <h2 className="font-serif text-xl sm:text-2xl font-semibold 
                              bg-gradient-to-r from-[#FFD97A] via-[#FFF1B8] to-[#FFD97A]
                              bg-clip-text text-transparent">
                 Pulak Sagar Ji Gurudev
               </h2>
-              <p className="text-sm text-amber-300/90 leading-relaxed max-w-md">
+              <p className="text-sm text-amber-300/90 leading-relaxed max-w-md mx-auto md:mx-0">
                 Rashtrasant Manogyacharya Shree Pulak Sagar Ji Gurudev —
                 Spreading eternal wisdom, discipline, compassion,
                 and the divine light of Jain Dharma.
@@ -93,16 +96,16 @@ export default function Footer() {
 
         {/* 🌿 2. Explore Section */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 
-                        gap-y-6 text-sm border-b border-[#D4AF37]/20 pb-8">
+                        gap-y-8 gap-x-6 text-sm border-b border-[#D4AF37]/20 pb-8">
 
           {footerLinks.map((item, idx) => (
             <div key={idx}>
               {item.subLinks ? (
                 <>
-                  <p className="font-semibold text-[#FFD97A] mb-2">
+                  <p className="font-semibold text-[#FFD97A] mb-3">
                     {item.name}
                   </p>
-                  <ul className="space-y-1">
+                  <ul className="space-y-2">
                     {item.subLinks.map((sub, i) => (
                       <li key={i}>
                         <Link
@@ -125,7 +128,6 @@ export default function Footer() {
               )}
             </div>
           ))}
-
         </div>
 
         {/* 🌐 3. Contact + Social */}
@@ -135,15 +137,21 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="text-sm text-amber-300/90 space-y-4 w-full md:w-1/2">
-            <p className="flex items-center gap-3">
-              <FaMapMarkerAlt className="text-[#FFD97A]" />
-              Vatsalya Bhawan, P-75, Street Number 5, Bihari Colony Extension, <br />Bihari Colony, Shahdara, Delhi - 110032
+
+            <p className="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+              <FaMapMarkerAlt className="text-[#FFD97A] mt-1" />
+              <span>
+                Vatsalya Bhawan, P-75, Street Number 5,  
+                Bihari Colony Extension, Shahdara, Delhi - 110032
+              </span>
             </p>
-            <p className="flex items-center gap-3">
+
+            <p className="flex items-center justify-center md:justify-start gap-3">
               <FaPhoneAlt className="text-[#FFD97A]" />
               +91 9910987666, 9810900699
             </p>
-            <p className="flex items-center gap-3">
+
+            <p className="flex items-center justify-center md:justify-start gap-3">
               <FaEnvelope className="text-[#FFD97A]" />
               pulaksagar@gmail.com
             </p>
@@ -156,8 +164,8 @@ export default function Footer() {
                 key={i}
                 href={s.url}
                 target="_blank"
-                style={{ color: s.color }}
-                className="text-2xl transition-transform duration-300 
+                rel="noopener noreferrer"
+                className="text-xl sm:text-2xl transition-transform duration-300 
                            hover:scale-125
                            hover:drop-shadow-[0_0_10px_rgba(255,215,120,0.8)]"
               >
@@ -168,7 +176,7 @@ export default function Footer() {
         </div>
 
         {/* 🌸 4. Copyright */}
-        <div className="text-xs text-amber-400/80 text-center pt-4 pb-6">
+        <div className="text-xs sm:text-sm text-amber-400/80 text-center pt-4 pb-6">
           © {new Date().getFullYear()}{" "}
           <span className="text-[#FFD97A] font-semibold">
             Rashtrasant Manogyacharya Shree Pulak Sagar Ji Gurudev

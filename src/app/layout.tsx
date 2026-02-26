@@ -10,8 +10,13 @@ import GlobalAudioPlayer from "../components/GlobalAudioPlayer";
 import SocialSidebar from "../components/layout/SocialSidebar";
 
 export const metadata = {
-  title: "Pulak Sagar Ji Gurudev - A Jain Sant",
+  title: "Pulak Sagar Ji Gurudev - Welcome to the Spiritual Journey",
   description: "Spreading the message of peace, truth, and compassion.",
+  icons: {
+    icon: [{ url: "/icon.png", sizes: "192x192", type: "image/png" }],
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 export default function RootLayout({
   children,

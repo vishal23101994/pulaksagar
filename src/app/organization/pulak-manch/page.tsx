@@ -2,23 +2,64 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Users, Heart, BookOpen, Layers, Phone, Download } from "lucide-react";
+import { Users, Heart, BookOpen, Layers, Download } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
 
+/* ---------------- Premium Sparkle Background ---------------- */
+function Sparkles() {
+  const sparkles = Array.from({ length: 100 });
+
+  return (
+    <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
+      {sparkles.map((_, i) => {
+        const size = Math.random() * 3 + 1;
+
+        return (
+          <span
+            key={i}
+            className="absolute rounded-full bg-[#D4AF37]"
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: 0.7,
+              boxShadow: "0 0 10px rgba(212,175,55,0.8)",
+              animation: `float ${4 + Math.random() * 6}s ease-in-out infinite`,
+            }}
+          />
+        );
+      })}
+
+      <style jsx>{`
+        @keyframes float {
+          0% { transform: translateY(0px); opacity: 0.6; }
+          50% { transform: translateY(-10px); opacity: 1; }
+          100% { transform: translateY(0px); opacity: 0.6; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 export default function PulakManchPage() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[#FAE3A3]/30 to-[#FFF8E7] text-[#4B1E00]">
+    <section className="relative min-h-screen bg-black text-[#F5D98F] overflow-hidden">
+      {/* Sparkles */}
+      <Sparkles />
+
+      {/* GLOBAL GOLDEN AURA */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-yellow-500/10 blur-[200px] rounded-full" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-400/10 blur-[160px] rounded-full" />
+      </div>
 
       {/* HERO */}
-      <header className="relative overflow-hidden py-24 px-6 bg-gradient-to-br from-[#FFF3C4] via-[#FFF8E7] to-[#FFE7B3]">
-
-        {/* decorative blur shapes */}
-        <div className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-amber-300/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-yellow-400/20 rounded-full blur-3xl" />
+      <header className="relative overflow-hidden py-24 px-6 border-b border-yellow-600/20 bg-gradient-to-br from-[#111] via-[#1a1a1a] to-black">
 
         <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
@@ -29,36 +70,33 @@ export default function PulakManchPage() {
             transition={{ duration: 0.8 }}
             className="text-center md:text-left space-y-6"
           >
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight">
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-300 bg-clip-text text-transparent">
               Pulak Manch <br />
-              <span className="text-amber-700">Parivar</span>
+              Parivar
             </h1>
 
-            <p className="text-lg md:text-xl leading-relaxed max-w-xl">
+            <p className="text-lg md:text-xl leading-relaxed max-w-xl text-yellow-100/80">
               A nationwide spiritual and service-oriented youth movement inspired
               by the blessings of{" "}
-              <strong>Acharya Shri Pulak Sagar Ji Maharaj</strong>,
+              <strong className="text-yellow-400">Acharya Shri Pulak Sagar Ji Maharaj</strong>,
               dedicated to discipline, character building and national consciousness.
             </p>
 
-            <div className="text-amber-800 font-semibold tracking-wide">
+            <div className="text-yellow-400 font-semibold tracking-wide">
               Breaking Not… Linking is Our Identity
             </div>
           </motion.div>
 
-          {/* RIGHT IMAGE - MAHARAJ JI */}
+          {/* RIGHT IMAGE */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
             className="relative flex justify-center items-center"
           >
+            <div className="absolute w-96 h-96 bg-yellow-500/20 rounded-full blur-[150px] animate-pulse" />
 
-            {/* Golden Aura */}
-            <div className="absolute w-80 h-80 bg-gradient-to-r from-amber-300/40 via-yellow-300/40 to-orange-300/40 rounded-full blur-3xl animate-pulse" />
-
-            {/* Glass Frame */}
-            <div className="relative p-3 rounded-3xl bg-white/40 backdrop-blur-md shadow-2xl border border-amber-200">
+            <div className="relative p-3 rounded-3xl bg-[#111]/80 backdrop-blur-md border border-yellow-600/30 shadow-[0_0_60px_rgba(255,215,0,0.15)]">
               <Image
                 src="/images/gallery/maharaj/img4.jpeg"
                 alt="Acharya Shri Pulak Sagar Ji Maharaj"
@@ -68,7 +106,6 @@ export default function PulakManchPage() {
                 priority
               />
             </div>
-
           </motion.div>
         </div>
       </header>
@@ -81,14 +118,14 @@ export default function PulakManchPage() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white/70 backdrop-blur-md p-10 rounded-3xl shadow-xl border border-amber-200"
+          transition={{ duration: 0.7 }}
+          className="bg-[#111]/80 backdrop-blur-md p-10 rounded-3xl border border-yellow-600/30 shadow-[0_0_40px_rgba(255,215,0,0.08)]"
         >
-          <h2 className="text-3xl font-serif font-semibold mb-4">
+          <h2 className="text-3xl font-serif font-semibold mb-4 bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
             About Pulak Manch Parivar
           </h2>
-          <p className="text-lg leading-relaxed text-justify">
+          <p className="text-lg leading-relaxed text-justify text-yellow-100/80">
             Pulak Manch Parivar is not a crowd driven by emotional gatherings,
             but a disciplined collective of dedicated volunteers working under
             the guidance of Gurudev’s philosophy of compassion, simplicity, and
@@ -128,107 +165,94 @@ export default function PulakManchPage() {
               key={i}
               variants={fadeUp}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(251,191,36,0.25)" }}
-              className="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all border border-amber-200/50"
-
+              whileHover={{ y: -8 }}
+              className="bg-[#121212] p-8 rounded-3xl border border-yellow-600/20 hover:border-yellow-400/50 shadow-lg hover:shadow-[0_0_40px_rgba(255,215,0,0.15)] transition-all"
             >
-              <div className="mb-3">{card.icon}</div>
-              <h3 className="text-xl font-semibold mb-3">{card.title}</h3>
-              <ul className="space-y-2">
+              <div className="mb-3 text-yellow-400">{card.icon}</div>
+              <h3 className="text-xl font-semibold mb-3 text-yellow-300">{card.title}</h3>
+              <div className="grid sm:grid-cols-2 gap-3">
                 {card.items.map((item) => (
-                  <li key={item}>• {item}</li>
+                  <div
+                    key={item}
+                    className="
+                      bg-black/60
+                      border border-yellow-600/20
+                      rounded-xl
+                      px-4 py-3
+                      text-sm
+                      text-yellow-100/90
+                      transition-all duration-300
+                      hover:border-yellow-400/50
+                      hover:shadow-[0_0_20px_rgba(255,215,0,0.25)]
+                      hover:-translate-y-1
+                    "
+                  >
+                    {item}
+                  </div>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           ))}
         </motion.section>
 
-
-        {/* MEMBERSHIP & DOWNLOAD */}
+        {/* MEMBERSHIP */}
         <motion.section
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white/70 p-10 rounded-3xl shadow-xl border border-amber-200 text-center"
+          transition={{ duration: 0.7 }}
+          className="bg-[#111]/80 p-10 rounded-3xl border border-yellow-600/30 shadow-[0_0_40px_rgba(255,215,0,0.08)] text-center"
         >
-          <h2 className="text-2xl font-serif font-semibold mb-4">
+          <h2 className="text-2xl font-serif font-semibold mb-4 bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
             Membership & Contribution
           </h2>
 
-          <p className="text-lg leading-relaxed mb-10">
+          <p className="text-lg leading-relaxed mb-10 text-yellow-100/80">
             • One-time Registration / Application Fee: <strong>₹1100 per member</strong><br />
             • Little Champs: <strong>Free</strong><br />
             • Monthly & Annual contributions are decided locally by each unit.
           </p>
 
-          {/* DOWNLOAD FORMS */}
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
-            {/* GENERAL FORM */}
-            <motion.a
-              href="/forms/membership_form.pdf"
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-              className="
-                group bg-gradient-to-br from-amber-500 to-yellow-400
-                text-white p-6 rounded-2xl
-                shadow-lg hover:shadow-2xl
-                transition-all
-              "
-            >
-              <Download className="mx-auto mb-3" />
-              <h3 className="text-lg font-semibold">Pulak Manch</h3>
-              <p className="text-sm opacity-90">Membership Form</p>
-            </motion.a>
+            {[
+              { title: "Pulak Manch", desc: "Membership Form", link: "/forms/membership_form.pdf" },
+              { title: "JMJM", desc: "Ladies Membership Form", link: "/forms/JMJM.pdf" },
+              { title: "PJCM", desc: "Gents Membership Form", link: "/forms/PJCM.pdf" },
+            ].map((item, i) => (
+              <motion.a
+                key={i}
+                href={item.link}
+                download
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+                className="group bg-gradient-to-br from-yellow-500 via-amber-500 to-yellow-400 text-black p-6 rounded-2xl shadow-lg hover:shadow-[0_0_30px_rgba(255,215,0,0.6)] transition-all"
+              >
+                <Download className="mx-auto mb-3" />
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="text-sm opacity-80">{item.desc}</p>
+              </motion.a>
+            ))}
 
-            {/* JMJM – LADIES */}
-            <motion.a
-              href="/forms/JMJM.pdf"
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-              className="
-                group bg-gradient-to-br from-pink-500 to-rose-400
-                text-white p-6 rounded-2xl
-                shadow-lg hover:shadow-2xl
-                transition-all
-              "
-            >
-              <Download className="mx-auto mb-3" />
-              <h3 className="text-lg font-semibold">JMJM</h3>
-              <p className="text-sm opacity-90">
-                Ladies Membership Form
-              </p>
-            </motion.a>
-
-            {/* PJCM – GENTS */}
-            <motion.a
-              href="/forms/PJCM.pdf"
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-              className="
-                group bg-gradient-to-br from-blue-600 to-indigo-500
-                text-white p-6 rounded-2xl
-                shadow-lg hover:shadow-2xl
-                transition-all
-              "
-            >
-              <Download className="mx-auto mb-3" />
-              <h3 className="text-lg font-semibold">PJCM</h3>
-              <p className="text-sm opacity-90">
-                Gents Membership Form
-              </p>
-            </motion.a>
-            <a
-              href="/organization/pulak-manch/register"
-              className="mt-6 inline-block bg-[#6A0000] text-white px-6 py-3 rounded-xl"
-            >
-              Register Online (₹1100)
-            </a>
+            <div className="col-span-full flex justify-center mt-6">
+              <a
+                href="/organization/pulak-manch/register"
+                className="
+                  bg-gradient-to-r
+                  from-yellow-500 via-amber-500 to-yellow-400
+                  text-black font-semibold
+                  px-10 py-3
+                  rounded-full
+                  shadow-lg
+                  hover:scale-105
+                  hover:shadow-[0_0_30px_rgba(255,215,0,0.7)]
+                  transition-all duration-300
+                "
+              >
+                Register Online (₹1100)
+              </a>
+            </div>
 
           </div>
         </motion.section>
@@ -250,14 +274,14 @@ export default function PulakManchPage() {
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
+              viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               whileHover={{ y: -8 }}
-              viewport={{ once: true }}
-              className="bg-amber-50 p-8 rounded-2xl border border-amber-200 text-center"
+              className="bg-[#121212] p-8 rounded-2xl border border-yellow-600/20 text-center hover:border-yellow-400/50 shadow-lg hover:shadow-[0_0_30px_rgba(255,215,0,0.15)] transition-all"
             >
-              <div className="mb-3 flex justify-center">{v.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{v.title}</h3>
-              <p>{v.text}</p>
+              <div className="mb-3 flex justify-center text-yellow-400">{v.icon}</div>
+              <h3 className="text-xl font-semibold mb-2 text-yellow-300">{v.title}</h3>
+              <p className="text-yellow-100/80">{v.text}</p>
             </motion.div>
           ))}
         </motion.section>
@@ -267,15 +291,15 @@ export default function PulakManchPage() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white/70 p-10 rounded-3xl shadow-xl border border-amber-200"
+          transition={{ duration: 0.7 }}
+          className="bg-[#111]/80 p-10 rounded-3xl border border-yellow-600/30 shadow-[0_0_40px_rgba(255,215,0,0.08)]"
         >
-          <h2 className="text-2xl font-serif font-semibold mb-6 text-center">
+          <h2 className="text-2xl font-serif font-semibold mb-6 text-center bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
             Contact & Offices
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8 text-sm text-center">
+          <div className="grid md:grid-cols-2 gap-8 text-sm text-center text-yellow-100/80">
             <div>
               <strong>National Office</strong><br />
               Vatsalya Bhawan, P-75, Gali No. 5,<br />
