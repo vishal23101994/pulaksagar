@@ -58,11 +58,19 @@ const achievements = [
   },
   {
     icon: Award,
-    title: "Vishwant",
+    title: "Vishva Sant",
     description:
       "A distinguished national honor acknowledging global spiritual influence and humanitarian vision.",
     details:
       "Bestowed upon revered saints whose teachings transcend regional boundaries, spreading universal values of peace, compassion, and non-violence across communities.",
+  },
+  {
+    icon: Award,
+    title: "Shanti Doot Sammaan",
+    description:
+      "An esteemed recognition celebrating the embodiment of peace, dharma, and spiritual guidance.",
+    details:
+      "Presented to distinguished saints whose divine discourse and humanitarian service nurture inner transformation, ethical living, and the timeless principles of Jain Dharma.",
   },
   {
     icon: Award,

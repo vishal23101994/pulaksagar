@@ -522,37 +522,36 @@ export default function JinsharnamTirthPage() {
             ].map((card, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.15 }}
-                whileHover={{ y: -12 }}
-                className="relative bg-[#0A0A0A]
-                rounded-3xl p-10
-                border border-[#D4AF37]/40
-                shadow-[0_30px_80px_rgba(212,175,55,0.25)]
-                hover:shadow-[0_50px_150px_rgba(212,175,55,0.5)]
-                transition-all duration-500 overflow-hidden"
+                whileHover={{ y: -8 }}
+                className="
+                  bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E]
+                  text-black
+                  rounded-3xl
+                  p-8
+                  border border-[#B8860B]/40
+                  shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+                  hover:shadow-[0_30px_70px_rgba(0,0,0,0.35)]
+                  transition-all duration-300
+                "
               >
-
-                {/* Golden glow inside card */}
-                <div className="absolute -top-10 -right-10 w-40 h-40 
-                  bg-[#FFD97A]/10 blur-3xl rounded-full" />
-
-                <div className="relative z-10">
-                  <div className="text-3xl mb-4">{card.icon}</div>
-
-                  <h4 className="text-xl font-semibold text-[#FFD97A] mb-4">
-                    {card.title}
-                  </h4>
-
-                  <ul className="text-amber-200 space-y-2 text-sm leading-relaxed">
-                    {card.items.map((item, i) => (
-                      <li key={i} className="hover:text-[#FFD97A] transition">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="text-3xl mb-4">
+                  {card.icon}
                 </div>
+
+                <h4 className="text-xl font-serif font-semibold mb-4">
+                  {card.title}
+                </h4>
+
+                <ul className="space-y-2 text-sm leading-relaxed">
+                  {card.items.map((item, i) => (
+                    <li key={i} className="hover:translate-x-1 transition duration-200">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -708,18 +707,22 @@ export default function JinsharnamTirthPage() {
               {/* SIDE-BY-SIDE Sections */}
               <div className="grid md:grid-cols-2 gap-12">
                 {/* LEFT — PREMIUM BANK CARD */}
-                <div className="bg-[#0B0B0B]
+                <div className="
+                  bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E]
+                  text-black
                   p-12 rounded-3xl
-                  border border-[#D4AF37]/40
-                  shadow-[0_40px_120px_rgba(212,175,55,0.35)]
-                  hover:shadow-[0_50px_150px_rgba(212,175,55,0.55)]
-                  transition-all duration-500">
+                  border border-[#B8860B]/40
+                  shadow-[0_30px_80px_rgba(0,0,0,0.25)]
+                  hover:shadow-[0_40px_100px_rgba(0,0,0,0.35)]
+                  hover:-translate-y-2
+                  transition-all duration-300"
+                >
 
-                  <h3 className="text-3xl font-serif text-[#FFD97A] mb-8">
+                  <h3 className="text-3xl font-serif text-black mb-8">
                     Bank Transfer
                   </h3>
 
-                  <p className="text-amber-200 mb-8 font-semibold">
+                  <p className="text-black mb-8 font-semibold">
                     SHRI DIGAMBAR JAIN JINSHARNAM TIRTH TRUST
                   </p>
 
@@ -729,10 +732,16 @@ export default function JinsharnamTirthPage() {
                     { label: "PAN", value: "AALTS9991H" },
                   ].map((item, index) => (
                     <div key={index} className="mb-6">
-                      <p className="text-sm text-amber-400">{item.label}</p>
+                      <p className="text-sm text-black/70">{item.label}</p>
 
-                      <div className="flex items-center justify-between mt-2 bg-black/40 p-4 rounded-xl border border-[#D4AF37]/30">
-                        <span className="font-mono text-lg text-amber-100">
+                      <div className="
+                        flex items-center justify-between mt-2
+                        bg-white/40
+                        backdrop-blur-sm
+                        p-4 rounded-xl
+                        border border-[#B8860B]/40"
+                      >
+                        <span className="font-mono text-lg text-black">
                           {item.value}
                         </span>
 
@@ -747,7 +756,7 @@ export default function JinsharnamTirthPage() {
                     </div>
                   ))}
 
-                  <p className="text-amber-300 mt-6">
+                  <p className="text-black mt-6">
                     Bank: Canara Bank  
                     <br />
                     Branch: Silvassa (DN)
@@ -758,23 +767,36 @@ export default function JinsharnamTirthPage() {
                     transition={{ duration: 0.6 }}
                     className="mt-10 flex justify-center items-center"
                   >
-                    <div className="flex items-center gap-3 text-emerald-400 text-lg font-semibold">
-                      <CheckCircle size={26} className="text-emerald-400" />
+                    <div className="flex items-center gap-3 text-[#1B5E20] text-lg font-semibold">
+                      <CheckCircle size={24} className="text-[#2E7D32]" />
                       Eligible for 80G Tax Exemption
                     </div>
                   </motion.div>
                 </div>
 
                 {/* RIGHT — QR Code */}
-                <div className="bg-gradient-to-br from-[#0B0B0B] to-[#141414] text-amber-100
-                                p-10 rounded-3xl
-                                shadow-[0_30px_80px_rgba(212,175,55,0.35)]
-                                border border-[#FFD97A]/50 flex flex-col items-center">
-                  <h3 className="text-2xl font-serif text-[#FFD97A] drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] font-semibold mb-6">
+                <div className="
+                  bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E]
+                  text-black
+                  p-10 rounded-3xl
+                  shadow-[0_30px_80px_rgba(0,0,0,0.25)]
+                  border border-[#B8860B]/40
+                  hover:-translate-y-2
+                  hover:shadow-[0_40px_100px_rgba(0,0,0,0.35)]
+                  transition-all duration-300
+                  flex flex-col items-center"
+                >
+                  <h3 className="text-2xl font-serif text-black font-semibold mb-6">
                     UPI / QR Donation
                   </h3>
 
-                  <div className="bg-[#111111] rounded-xl border border-amber-300 shadow-lg p-4">
+                  <div className="
+                    bg-white/50
+                    rounded-xl
+                    border border-[#B8860B]/40
+                    shadow-md
+                    p-4"
+                  >
                     <img
                       src="/images/donation/jinsharnam_qr.jpg"
                       alt="UPI QR Code"
@@ -782,9 +804,20 @@ export default function JinsharnamTirthPage() {
                     />
                   </div>
 
-                  <p className="text-[#FFD97A] drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]/80 text-center mt-4 text-sm">
+                  <p className="text-black/80 text-center mt-4 text-sm">
                     Scan using GPay / PhonePe / Paytm / BHIM
                   </p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-10 flex justify-center items-center"
+                  >
+                    <div className="flex items-center gap-3 text-[#1B5E20] text-lg font-semibold">
+                      <CheckCircle size={24} className="text-[#2E7D32]" />
+                      Eligible for 80G Tax Exemption
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             </div>

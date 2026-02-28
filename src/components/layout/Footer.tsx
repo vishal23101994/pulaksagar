@@ -71,10 +71,22 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row items-center gap-6">
 
-            <div className="relative w-16 h-16">
-              <div className="absolute inset-[-12px] bg-white/50 blur-2xl rounded-full opacity-40" />
-              <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[#8B6F1E] shadow-[0_0_30px_rgba(139,111,30,0.7)]">
-                <Image src="/images/navlogo.png" alt="Pulak Sagar Ji" fill className="object-cover" />
+            <div className="relative w-18 h-18 md:w-24 md:h-24">
+              {/* Soft Glow */}
+              <div className="absolute inset-[-14px] bg-white/50 blur-2xl rounded-full opacity-40" />
+
+              {/* Gold Ring */}
+              <div className="relative w-full h-full rounded-full overflow-hidden 
+                              border-2 border-[#8B6F1E] 
+                              shadow-[0_0_40px_rgba(139,111,30,0.7)]">
+
+                <Image
+                  src="/images/logonew.png"
+                  alt="Pulak Sagar Ji"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
 
@@ -145,7 +157,7 @@ export default function Footer() {
 
             <p className="flex items-center justify-center md:justify-start gap-3">
               <FaEnvelope className="text-black" />
-              pulaksagar@gmail.com
+              jinsharnam@gmail.com
             </p>
           </div>
 

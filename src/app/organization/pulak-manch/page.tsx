@@ -303,26 +303,44 @@ export default function PulakManchPage() {
               </motion.a>
             ))}
 
-            <div className="col-span-full flex justify-center mt-10">
-              <a
+            <div className="col-span-full flex justify-center mt-8">
+              <motion.a
                 href="https://jinsharnammedia.com/organization/pulak-manch/register"
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.96 }}
                 className="relative group inline-flex items-center justify-center
-                           px-30 py-4 rounded-full
-                           font-semibold text-lg tracking-wide
-                           text-[#F5E2A0]
+                           px-25 py-4
+                           rounded-full
+                           font-semibold text-lg tracking-wider
+                           text-[#FFD700]
                            bg-black
                            border border-[#D4AF37]
                            overflow-hidden
                            transition-all duration-500
-                           hover:-translate-y-1
-                           hover:shadow-[0_0_60px_rgba(255,215,0,0.6)]"
+                           shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
               >
 
+                {/* Inner Glow Ring */}
+                <span className="absolute inset-0 rounded-full
+                                 opacity-0 group-hover:opacity-100
+                                 shadow-[0_0_40px_rgba(255,215,0,0.6)]
+                                 transition-all duration-500" />
+
+                {/* Animated Gold Sweep */}
+                <span className="absolute inset-0
+                                 bg-[linear-gradient(120deg,transparent,rgba(255,215,0,0.4),transparent)]
+                                 translate-x-[-120%]
+                                 group-hover:translate-x-[120%]
+                                 transition-transform duration-1000 ease-in-out" />
+
+                {/* Inner Border Glow */}
+                <span className="absolute inset-[2px] rounded-full border border-[#FFD700]/40 opacity-0 group-hover:opacity-100 transition duration-500" />
+
                 {/* Text */}
-                <span className="relative z-10">
-                  Register Online (₹1100)
+                <span className="relative z-10 group-hover:text-[#FFF1B8] transition duration-300">
+                  Click here to Register Online
                 </span>
-              </a>
+              </motion.a>
             </div>
 
           </div>

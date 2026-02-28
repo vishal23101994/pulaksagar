@@ -102,7 +102,7 @@ export default function Navbar() {
               {/* Image Frame */}
               <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-[#8B6F1E] shadow-[0_0_30px_rgba(212,175,55,0.8)]">
                 <Image
-                  src="/images/navlogo.png"
+                  src="/images/logonew.png"
                   alt="Pulak Sagar Ji"
                   fill
                   className="object-cover"

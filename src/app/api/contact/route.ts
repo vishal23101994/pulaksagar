@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     await transporter.sendMail({
       from: `"Pulak Sagar Website" <${process.env.EMAIL_USER}>`,
-      to: "ektadirectory@gmail.com",
+      to: "jinsharnam@gmail.com",
       subject: `New Contact Message from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; background:#f4f4f4; padding:30px;">

@@ -116,7 +116,12 @@ export default function ContactPage() {
           >
             <ContactItem
               icon={MapPin}
-              title="Central Office"
+              title={
+                <>
+                  Central Office & Media Partner <br />
+                  <span className="text-[#D4AF37]">Jinsharnam Media</span>
+                </>
+              }
               content={
                 <>
                   Vatsalya Bhawan <br />
@@ -130,7 +135,7 @@ export default function ContactPage() {
             <ContactItem
               icon={Mail}
               title="Email"
-              content="info@pulaksagar.com"
+              content="jinsharnam@gmail.com"
             />
 
             <ContactItem
@@ -151,12 +156,17 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="bg-[#111827]/90 backdrop-blur-xl
-                       rounded-3xl p-10
-                       border border-[#D4AF37]/20
-                       shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+            className="
+              bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E]
+              text-black
+              rounded-3xl p-10
+              border border-[#B8860B]/40
+              shadow-[0_30px_80px_rgba(0,0,0,0.25)]
+              hover:shadow-[0_40px_100px_rgba(0,0,0,0.35)]
+              transition-all duration-300
+            "
           >
-            <h2 className="text-2xl font-bold text-[#D4AF37] mb-8">
+            <h2 className="text-2xl font-bold text-black mb-8">
               Send a Message
             </h2>
 
@@ -166,7 +176,15 @@ export default function ContactPage() {
                 type="text"
                 required
                 placeholder="Full Name"
-                className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 bg-[#1F2937] text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
+                className="
+                  w-full px-4 py-3 rounded-xl
+                  border border-[#B8860B]/40
+                  bg-white/50
+                  text-black
+                  placeholder:text-black/60
+                  focus:outline-none
+                  focus:ring-2 focus:ring-[#B8860B]/40
+                "
               />
 
               <input
@@ -174,7 +192,15 @@ export default function ContactPage() {
                 type="email"
                 required
                 placeholder="Email Address"
-                className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 bg-[#1F2937] text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
+                className="
+                  w-full px-4 py-3 rounded-xl
+                  border border-[#B8860B]/40
+                  bg-white/50
+                  text-black
+                  placeholder:text-black/60
+                  focus:outline-none
+                  focus:ring-2 focus:ring-[#B8860B]/40
+                "
               />
 
               <textarea
@@ -182,20 +208,35 @@ export default function ContactPage() {
                 rows={5}
                 required
                 placeholder="Your Message / Invitation Details"
-                className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 bg-[#1F2937] text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
+                className="
+                  w-full px-4 py-3 rounded-xl
+                  border border-[#B8860B]/40
+                  bg-white/50
+                  text-black
+                  placeholder:text-black/60
+                  focus:outline-none
+                  focus:ring-2 focus:ring-[#B8860B]/40
+                "
               ></textarea>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl bg-[#D4AF37] text-black font-semibold shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:bg-[#E6C76B] transition flex items-center justify-center gap-2"
+                className="
+                  w-full py-3 rounded-xl
+                  bg-black text-[#F5E2A0]
+                  font-semibold
+                  hover:bg-[#2A2006]
+                  transition
+                  flex items-center justify-center gap-2
+                "
               >
                 <Send size={18} />
                 {loading ? "Sending..." : "Send Message"}
               </button>
 
               {status && (
-                <p className="text-center text-[#D4AF37] mt-4">{status}</p>
+                <p className="text-center text-black mt-4 font-medium">{status}</p>
               )}
             </form>
           </motion.div>
