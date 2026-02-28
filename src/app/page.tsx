@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import LatestUpdatesSection from "../components/layout/LatestUpdatesSection";
+import AdvertisementCards from "../components/layout/AdvertisementCards";
 
 export default function Home() {
   const [latestVideos, setLatestVideos] = useState<any[]>([]);
@@ -35,6 +37,8 @@ export default function Home() {
         selectedVideoIndex={selectedVideoIndex}
         setSelectedVideoIndex={setSelectedVideoIndex}
       />
+      <LatestUpdatesSection />
+      <AdvertisementCards />
     </main>
   );
 }
@@ -217,17 +221,17 @@ function DivineMessageSection() {
                             bg-gradient-to-br from-[#FFF9DA] to-[#D4AF37] 
                             shadow-[0_15px_50px_rgba(0,0,0,0.4)]">
 
-              <div className="p-2 rounded-[15px] bg-[#FFF6C5]">
-                <img
-                  src="/images/gallery/maharaj/6.jpg"
-                  alt="Shree Pulak Sagar Ji Gurudev"
-                  className="rounded-[15px] 
-                             w-[260px] 
-                             sm:w-[320px] 
-                             md:w-[420px] 
-                             object-cover"
-                />
-              </div>
+              
+              <img
+                src="/images/gallery/maharaj/17.jpg"
+                alt="Shree Pulak Sagar Ji Gurudev"
+                className="rounded-[15px] 
+                           w-[4000px] 
+                           sm:w-[400px] 
+                           md:w-[550px] 
+                           object-cover"
+              />
+              
 
             </div>
           </div>
@@ -335,7 +339,7 @@ function OrganizationsSection() {
         </motion.div>
 
         {/* ===== CARDS ===== */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-30 px-2">
 
           {orgs.map((org, i) => (
             <motion.div
@@ -350,8 +354,11 @@ function OrganizationsSection() {
               <div className="absolute inset-0 bg-[#C6A75E]/0 group-hover:bg-[#C6A75E]/10 blur-2xl rounded-3xl transition duration-500"></div>
 
               <div className="relative h-full flex flex-col 
-                              bg-gradient-to-b from-[#1A1A1A] to-[#111111] 
-                              border border-[#C6A75E]/20 
+                              bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E]
+                              border border-[#3B2A00]/20
+                              text-[#3B2A00]
+                              shadow-[0_25px_70px_rgba(0,0,0,0.6)]
+                              hover:shadow-[0_0_60px_rgba(198,167,94,0.6)]
                               rounded-[30px] md:rounded-[40px] 
                               p-6 sm:p-8 md:p-10 
                               text-center 
@@ -370,12 +377,12 @@ function OrganizationsSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl sm:text-2xl font-serif text-[#C6A75E] mb-4 md:mb-6">
+                <h3 className="text-xl sm:text-2xl font-serif text-[#3B2A00] mb-4 md:mb-6">
                   {org.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#BFBFBF] text-sm sm:text-base leading-relaxed mb-6 md:mb-8 px-2">
+                <p className="text-[#4A3A10] text-sm sm:text-base leading-relaxed mb-6 md:mb-8 px-2">
                   {org.desc}
                 </p>
 
@@ -384,8 +391,8 @@ function OrganizationsSection() {
                   <Link
                     href={org.href}
                     className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 rounded-full 
-                               bg-gradient-to-r from-[#C6A75E] to-[#E0C97A] 
-                               text-black text-sm sm:text-base font-semibold 
+                               bg-[#3B2A00] text-[#F5E2A0]
+                               hover:bg-black text-sm sm:text-base font-semibold 
                                shadow-md hover:scale-105 hover:shadow-xl 
                                transition-all duration-300"
                   >
@@ -451,12 +458,12 @@ function PulakSagarHighlights() {
               <div className="absolute inset-0 blur-3xl bg-white/30 rounded-[30px] md:rounded-[40px]" />
 
               {/* Frame */}
-              <div className="relative p-3 md:p-4 rounded-[30px] md:rounded-[40px] 
+              <div className="relative p-2 md:p-3 rounded-[30px] md:rounded-[40px] 
                               bg-gradient-to-br from-[#FFF4C4] to-[#D4AF37] 
                               shadow-[0_15px_40px_rgba(0,0,0,0.4)]">
 
                 <img
-                  src="/images/gallery/maharaj/7.jpg"
+                  src="/images/gallery/maharaj/10.jpg"
                   alt="Acharya Shree Ji"
                   className="rounded-[20px] md:rounded-[30px] 
                              w-[260px] sm:w-[320px] md:w-[480px] 
@@ -529,9 +536,21 @@ function LatestPravachanSection({
 
         {/* Heading */}
         <div className="relative mb-10 md:mb-16 text-center md:text-left">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#C6A75E]">
-            Latest Pravachan
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-14 md:mb-24"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif text-[#C6A75E] tracking-wide">
+              Latest Pravachans
+            </h2>
+
+            <div className="mt-4 md:mt-6 flex justify-center">
+              <div className="w-20 md:w-40 h-[3px] bg-gradient-to-r from-transparent via-[#C6A75E] to-transparent rounded-full" />
+            </div>
+          </motion.div>
 
           <Link
             href="/media/pravachan"
@@ -548,7 +567,7 @@ function LatestPravachanSection({
             <div
               key={video.id?.videoId || video.id}
               onClick={() => setSelectedVideoIndex(index)}
-              className="group bg-[#1E1E1E] rounded-2xl overflow-hidden border border-[#C6A75E]/20 
+              className="group bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E] border border-[#3B2A00]/20 rounded-2xl overflow-hidden border border-[#C6A75E]/20 
                          shadow-xl hover:shadow-[0_0_40px_rgba(198,167,94,0.3)] 
                          transition-all cursor-pointer"
             >
@@ -567,7 +586,7 @@ function LatestPravachanSection({
               </div>
 
               <div className="p-4">
-                <p className="text-sm sm:text-base text-[#F5F5F5] line-clamp-2">
+                <p className="text-sm sm:text-base text-[#3B2A00] font-medium line-clamp-2">
                   {video.snippet?.title}
                 </p>
               </div>
@@ -610,7 +629,7 @@ function VideoModal({
       >
         {/* Close */}
         <button
-          className="absolute top-3 right-4 text-[#C6A75E] text-xl sm:text-2xl"
+          className="absolute top-0 right-2 text-[#C6A75E] text-xl sm:text-2xl"
           onClick={() => setSelectedVideoIndex(null)}
         >
           ✕
@@ -636,7 +655,7 @@ function VideoModal({
             onClick={() =>
               setSelectedVideoIndex((prev: number) => prev - 1)
             }
-            className="px-6 py-2 bg-[#C6A75E] text-black rounded-full disabled:opacity-40 w-full sm:w-auto"
+            className="px-6 py-2 bg-[#3B2A00] text-[#F5E2A0] rounded-full disabled:opacity-40 w-full sm:w-auto"
           >
             ← Previous
           </button>

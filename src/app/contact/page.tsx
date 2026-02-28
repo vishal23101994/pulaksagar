@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Send } from "lucide-react";
 
@@ -40,13 +41,48 @@ function Sparkles() {
 }
 
 export default function ContactPage() {
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    const form = e.target;
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        setStatus("Message sent successfully 🙏");
+        form.reset();
+      } else {
+        setStatus("Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("Server error. Please try again later.");
+    }
+
+    setLoading(false);
+  };
+
   return (
     <section className="relative min-h-screen py-28 px-6 bg-[#0B0F1A] overflow-hidden text-white">
-
-      {/* Sparkles */}
       <Sparkles />
 
-      {/* Soft Gold Glow */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.06),transparent_60%)] pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -68,7 +104,6 @@ export default function ContactPage() {
           Connect for spiritual events, pravachan invitations & divine gatherings
         </p>
 
-        {/* 2 Column Layout */}
         <div className="grid md:grid-cols-2 gap-16 items-start">
 
           {/* LEFT SIDE */}
@@ -79,7 +114,6 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="space-y-10"
           >
-            {/* Office */}
             <ContactItem
               icon={MapPin}
               title="Central Office"
@@ -93,18 +127,16 @@ export default function ContactPage() {
               }
             />
 
-            {/* Email */}
             <ContactItem
               icon={Mail}
               title="Email"
               content="info@pulaksagar.com"
             />
 
-            {/* Phone */}
             <ContactItem
               icon={Phone}
               title="Phone"
-              content="+91-9810900699, 9910987666"
+              content="+91 9810900699, 9810900042"
             />
 
             <p className="text-[#D4AF37] italic">
@@ -128,45 +160,43 @@ export default function ContactPage() {
               Send a Message
             </h2>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <input
+                name="name"
                 type="text"
+                required
                 placeholder="Full Name"
-                className="w-full px-4 py-3 rounded-xl 
-                           border border-[#D4AF37]/30 
-                           bg-[#1F2937] text-white
-                           focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
+                className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 bg-[#1F2937] text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
               />
 
               <input
+                name="email"
                 type="email"
+                required
                 placeholder="Email Address"
-                className="w-full px-4 py-3 rounded-xl 
-                           border border-[#D4AF37]/30 
-                           bg-[#1F2937] text-white
-                           focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
+                className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 bg-[#1F2937] text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
               />
 
               <textarea
+                name="message"
                 rows={5}
+                required
                 placeholder="Your Message / Invitation Details"
-                className="w-full px-4 py-3 rounded-xl 
-                           border border-[#D4AF37]/30 
-                           bg-[#1F2937] text-white
-                           focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
+                className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 bg-[#1F2937] text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40"
               ></textarea>
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl 
-                           bg-[#D4AF37] text-black font-semibold
-                           shadow-[0_0_20px_rgba(212,175,55,0.3)]
-                           hover:bg-[#E6C76B] transition 
-                           flex items-center justify-center gap-2"
+                disabled={loading}
+                className="w-full py-3 rounded-xl bg-[#D4AF37] text-black font-semibold shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:bg-[#E6C76B] transition flex items-center justify-center gap-2"
               >
                 <Send size={18} />
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
+
+              {status && (
+                <p className="text-center text-[#D4AF37] mt-4">{status}</p>
+              )}
             </form>
           </motion.div>
         </div>
@@ -178,7 +208,6 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
           className="mt-20"
         >
-          {/* Title */}
           <motion.h3
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -191,7 +220,6 @@ export default function ContactPage() {
             Our Location
           </motion.h3>
 
-          {/* Address */}
           <h3 className="text-2xl font-serif text-center 
             bg-gradient-to-r from-[#FFD97A] via-[#FFF1B8] to-[#FFD97A]
             bg-clip-text text-transparent
@@ -199,19 +227,13 @@ export default function ContactPage() {
             mb-2">
             Vatsalya Bhawan
           </h3>
+
           <p className="text-center text-amber-300 text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
-            P-75, Street Number 5, Bihari Colony Extension, Bihari Colony, Shahdara, Delhi - 110032 
-            <br />
+            P-75, Street Number 5, Bihari Colony Extension, Bihari Colony, Shahdara, Delhi - 110032
           </p>
 
-          {/* Map Container with Address Overlay */}
-          <div
-            className="relative rounded-3xl overflow-hidden
-            border border-[#D4AF37]/50
-            shadow-[0_40px_120px_rgba(212,175,55,0.35)]"
-          >
+          <div className="relative rounded-3xl overflow-hidden border border-[#D4AF37]/50 shadow-[0_40px_120px_rgba(212,175,55,0.35)]">
 
-            {/* Google Map */}
             <iframe
               src="https://maps.google.com/maps?hl=en&q=28.66875167458338,77.28318141405892&z=15&output=embed"
               width="100%"
@@ -221,31 +243,24 @@ export default function ContactPage() {
               loading="lazy"
             />
 
-            {/* Address Overlay Card */}
-            <div className="absolute top-2 left-2 
-              bg-black/80 backdrop-blur-xl
-              border border-[#D4AF37]/40
-              rounded-2xl p-6
-              shadow-[0_20px_60px_rgba(212,175,55,0.4)]
-              max-w-sm
-              text-amber-100">
-
+            <div className="absolute top-2 left-2 bg-black/80 backdrop-blur-xl border border-[#D4AF37]/40 rounded-2xl p-6 shadow-[0_20px_60px_rgba(212,175,55,0.4)] max-w-sm text-amber-100">
               <div className="flex items-start gap-3">
                 <MapPin className="text-[#FFD97A] mt-1" size={22} />
                 <div>
                   <h4 className="text-lg font-semibold text-[#FFD97A] mb-1">
                     Vatsalya Bhawan
                   </h4>
-
                   <p className="text-sm leading-relaxed text-amber-200">
                     P-75, Street No 5,
-                    Bihari Colony Extension, <br />Bihari Colony,
-                    Shahdara, Delhi – 110032 <br /> India
+                    Bihari Colony Extension, <br />
+                    Bihari Colony,
+                    Shahdara, Delhi – 110032 <br />
+                    India
                   </p>
                 </div>
               </div>
-
             </div>
+
           </div>
         </motion.div>
 
@@ -254,15 +269,10 @@ export default function ContactPage() {
   );
 }
 
-/* Reusable Contact Item */
 function ContactItem({ icon: Icon, title, content }: any) {
   return (
     <div className="flex items-start gap-6 group">
-      <div className="w-14 h-14 rounded-full 
-                      bg-gradient-to-br from-[#D4AF37] to-[#F5E6A5]
-                      flex items-center justify-center 
-                      shadow-lg group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]
-                      transition">
+      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#F5E6A5] flex items-center justify-center shadow-lg">
         <Icon size={26} className="text-black" />
       </div>
       <div>

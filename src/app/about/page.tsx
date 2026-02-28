@@ -118,7 +118,7 @@ export default function AboutPage() {
 
             <div className="relative p-4 rounded-[40px] bg-gradient-to-br from-[#FFF6C5] to-[#D4AF37] shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
               <Image
-                src="/images/b7.jpg"
+                src="/images/gallery/maharaj/19.jpg"
                 alt="Acharyashri Pulak Sagar Ji"
                 width={560}
                 height={420}
@@ -138,13 +138,13 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative rounded-3xl bg-gradient-to-b from-[#1A1A1A] to-[#111111] border border-[#C6A75E]/20 p-6 sm:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.6)]"
+          className="gold-card relative rounded-3xl bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E] border border-[#3B2A00]/20 text-[#2A2006] shadow-[0_25px_80px_rgba(0,0,0,0.6)] p-6 sm:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.6)]"
         >
-          <h2 className="text-4xl md:text-5xl font-serif text-[#C6A75E] text-center mb-10">
+          <h2 className="text-4xl md:text-5xl font-serif text-[#2A2006] text-center mb-10">
             Biography
           </h2>
 
-          <div className="space-y-8 text-[#D6D6D6] leading-relaxed text-lg text-justify">
+          <div className="space-y-8 text-[#3B2A00] leading-relaxed text-lg text-justify">
 
             <div className="md:flex md:gap-12 md:flex-row-reverse">
 
@@ -177,20 +177,44 @@ export default function AboutPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
-                className="relative mt-6 md:mt-0 md:w-[340px]"
+                whileHover={{ y: -8 }}
+                className="relative mt-6 md:mt-0 md:w-[340px] group"
               >
-                <div className="absolute -inset-2 rounded-3xl bg-[#C6A75E]/30 blur-xl"></div>
 
-                <Image
-                  src="/images/7.jpg"
-                  alt="Acharyashri Pulak Sagar Ji"
-                  width={340}
-                  height={500}
-                  className="relative rounded-3xl border border-[#C6A75E]/40 shadow-[0_0_40px_rgba(198,167,94,0.4)] object-cover"
-                />
-                <p className="text-center text-sm mt-3 text-[#D6D6D6] italic font-medium">
+                {/* Soft Base Glow */}
+                <div className="absolute -inset-3 rounded-3xl bg-[#C6A75E]/25 blur-2xl 
+                                opacity-70 group-hover:opacity-100 
+                                transition duration-500"></div>
+
+                {/* Golden Frame */}
+                <div className="relative rounded-[28px] 
+                                bg-gradient-to-br from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E] 
+                                p-[3px]
+                                shadow-[0_20px_50px_rgba(0,0,0,0.5)]
+                                group-hover:shadow-[0_0_60px_rgba(198,167,94,0.6)]
+                                transition duration-500">
+
+                  {/* Inner Dark Layer */}
+                  <div className="relative rounded-[24px] bg-[#111] overflow-hidden">
+
+                    <Image
+                      src="/images/gallery/maharaj/20.jpg"
+                      alt="Acharyashri Pulak Sagar Ji"
+                      width={340}
+                      height={500}
+                      className="rounded-[24px] object-cover 
+                                 transition duration-500 
+                                 group-hover:scale-105"
+                    />  
+
+                  </div>
+                </div>
+
+                {/* Caption */}
+                <p className="text-center text-sm mt-4 text-[#000000] italic font-medium">
                   “Spreading the light of Jain wisdom with compassion and truth.”
                 </p>
+
               </motion.div>
             </div>
 
@@ -246,13 +270,13 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.2 }}
-              className="bg-[#1E1E1E] border border-[#C6A75E]/20 rounded-2xl p-6 text-center hover:shadow-[0_0_40px_rgba(198,167,94,0.4)] transition"
+              className="bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E] border border-[#3B2A00]/20 text-[#2A2006] hover:shadow-[0_0_40px_rgba(0,0,0,0.5)] rounded-2xl p-6 text-center hover:shadow-[0_0_40px_rgba(198,167,94,0.4)] transition"
             >
-              <div className="flex justify-center text-[#C6A75E] mb-4">
+              <div className="flex justify-center text-[#2A2006] mb-4">
                 {i.icon}
               </div>
-              <h3 className="text-lg text-[#F5E6B2] font-semibold">{i.title}</h3>
-              <p className="text-[#BFBFBF] mt-2">{i.date}</p>
+              <h3 className="text-lg text-black font-semibold">{i.title}</h3>
+              <p className="text-[#3B2A00] mt-2">{i.date}</p>
             </motion.div>
           ))}
         </div>
@@ -297,14 +321,14 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className="bg-[#1E1E1E] border border-[#C6A75E]/20 rounded-2xl p-6 text-center hover:shadow-[0_0_40px_rgba(198,167,94,0.4)] transition"
+              className="bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E] border border-[#3B2A00]/20 text-[#2A2006] rounded-2xl p-6 text-center hover:shadow-[0_0_40px_rgba(198,167,94,0.4)] transition"
             >
-              <div className="flex justify-center text-[#C6A75E] mb-4">
+              <div className="flex justify-center text-black font-semibold mb-4">
                 {item.icon}
               </div>
               <div>
-                <p className="text-lg text-[#F5E6B2] font-semibold">{item.label}</p>
-                <p className="text-[#BFBFBF] mt-2">{item.value}</p>
+                <p className="text-lg text-[#3B2A00] font-semibold">{item.label}</p>
+                <p className="text-[#3B2A00] mt-2">{item.value}</p>
               </div>
             </motion.div>
           ))}
@@ -326,7 +350,7 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative rounded-[40px] bg-gradient-to-b from-[#1A1A1A] to-[#111111] border border-[#C6A75E]/20 p-12 overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
+          className="relative rounded-[40px] bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E] text-[#2A2006] border border-[#3B2A00]/20 p-12 overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
         >
 
           {/* Glow Effect */}
@@ -335,11 +359,11 @@ export default function AboutPage() {
           <div className="relative grid md:grid-cols-2 gap-12 items-center">
 
             <div>
-              <h2 className="text-4xl font-serif text-[#C6A75E] mb-6">
+              <h2 className="text-4xl font-serif text-black mb-6">
                 Inspiration of Jinsharnam Tirth
               </h2>
 
-              <p className="text-[#D6D6D6] leading-relaxed text-lg">
+              <p className="gold-card text-[#3B2A00] leading-relaxed text-lg">
                 Through the inspiration of <strong>Bharat Gaurav Acharyashri Pulak Sagar Ji</strong>, 
                 another sacred pilgrimage has adorned our nation — 
                 <strong> Jinsharnam Tirth Jain Digambar Temple</strong>.
@@ -348,7 +372,7 @@ export default function AboutPage() {
               <div className="mt-8 flex gap-6">
                 <Link
                   href="/organization/jinsharnam-tirth"
-                  className="px-8 py-3 rounded-full bg-gradient-to-r from-[#C6A75E] to-[#E0C97A] text-black font-semibold hover:scale-105 transition"
+                  className="px-8 py-3 rounded-full bg-[#0F0F0F] text-[#F5E2A0] font-semibold hover:scale-105 transition"
                 >
                   Explore Tirth →
                 </Link>
@@ -383,29 +407,29 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="rounded-[40px] bg-gradient-to-b from-[#1A1A1A] to-[#111111] border border-[#C6A75E]/20 p-10 text-center shadow-xl"
+          className="rounded-[40px] bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E] text-[#2A2006] border border-[#3B2A00]/20 p-10 text-center shadow-xl"
         >
 
-          <h2 className="text-3xl font-serif text-[#C6A75E] mb-6">
+          <h2 className="text-3xl font-serif text-black mb-6">
             Profile Handler
           </h2>
 
-          <p className="text-[#D6D6D6] mb-8">
+          <p className="text-l gold-card text-[#3B2A00] mb-8">
             All social media channels of <strong>Bharat Gaurav Acharyashri Pulak Sagar Ji</strong> 
             are operated by <strong>Jinsharnam Media</strong>.
           </p>
 
           <div className="flex justify-center gap-6">
             <Link
-              href="/media/videos"
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-[#C6A75E] to-[#E0C97A] text-black font-semibold hover:scale-105 transition"
+              href="/media/pravachan"
+              className="px-8 py-3 rounded-full bg-[#0F0F0F] text-[#F5E2A0] font-semibold hover:scale-105 transition"
             >
-              Watch on YouTube →
+              Watch Pravachans →
             </Link>
 
             <Link
               href="/contact"
-              className="px-8 py-3 rounded-full border border-[#C6A75E]/40 text-[#E8E6E3] hover:bg-[#C6A75E] hover:text-black transition"
+              className="px-8 py-3 rounded-full bg-[#0F0F0F] text-[#F5E2A0] font-semibold hover:scale-105 transition"
             >
               Contact Office
             </Link>

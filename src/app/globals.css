@@ -26,6 +26,12 @@ strong {
   font-weight: 600;
   text-shadow: 0 0 8px rgba(212,175,55,0.4);
 }
+
+/* Override strong inside gold cards */
+.gold-card strong {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
 /* ================= HERO BACKGROUND ================= */
 
 .divine-hero-bg {
@@ -199,16 +205,24 @@ strong {
 }
 
 /* ===== News Ticker Marquee Animation ===== */
-
-@keyframes jm-marquee {
+/* Professional smooth ticker */
+@keyframes ticker {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
   }
 }
 
-.animate-jm-marquee {
-  animation: jm-marquee 35s linear infinite;
+.animate-ticker {
+  animation: ticker 60s linear infinite;
+  will-change: transform;
+}
+
+/* Improve moving text clarity */
+.marquee-text {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }

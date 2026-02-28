@@ -20,7 +20,7 @@ export default function FloatingSocialBar() {
     { icon: <FaYoutube className="text-[#FF0000]" />, url: "https://youtube.com/@jinsharnammedia?si=7H1TrEVFK6rjI5qu" },
     { icon: <FaFacebookF className="text-[#1877F2]" />, url: "https://www.facebook.com/Jinsharnammedia" },
     { icon: <FaInstagram className="text-[#E1306C]" />, url: "https://www.instagram.com/jinsharnam_media" },
-    { icon: <FaTwitter className="text-white" />, url: "https://x.com/jinsharnamedia" },
+    { icon: <FaTwitter className="text-[#1877F2]" />, url: "https://x.com/jinsharnamedia" },
     { icon: <FaLinkedinIn className="text-[#0077B5]" />, url: "https://www.linkedin.com/company/jinsharnammedia/" },
     { icon: <FaTelegramPlane className="text-[#0088cc]" />, url: "https://t.me/Jinsharnam_Media" },
     { icon: <FaPinterestP className="text-[#E60023]" />, url: "https://www.pinterest.com/jinsharnam/" },
@@ -29,7 +29,7 @@ export default function FloatingSocialBar() {
 
   return (
     <div
-      className={`fixed top-1/3 z-50 flex items-center transition-all duration-500 ${
+      className={`fixed top-1/4 z-50 flex items-center transition-all duration-500 ${
         isOpen ? "left-0" : "-left-16"
       }`}
     >

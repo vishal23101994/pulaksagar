@@ -7,7 +7,7 @@ import { Download, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ---------------- Premium Sparkle Background ---------------- */
 function Sparkles() {
-  const sparkles = Array.from({ length: 100 });
+  const sparkles = Array.from({ length: 120 });
 
   return (
     <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
@@ -24,7 +24,7 @@ function Sparkles() {
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
               opacity: 0.7,
-              boxShadow: "0 0 10px rgba(212,175,55,0.8)",
+              boxShadow: "0 0 14px rgba(212,175,55,0.9)",
               animation: `float ${4 + Math.random() * 6}s ease-in-out infinite`,
             }}
           />
@@ -34,7 +34,7 @@ function Sparkles() {
       <style jsx>{`
         @keyframes float {
           0% { transform: translateY(0px); opacity: 0.6; }
-          50% { transform: translateY(-10px); opacity: 1; }
+          50% { transform: translateY(-12px); opacity: 1; }
           100% { transform: translateY(0px); opacity: 0.6; }
         }
       `}</style>
@@ -83,8 +83,7 @@ export default function GalleryPage() {
   };
 
   const prevImage = () => {
-    const newIndex =
-      (currentIndex - 1 + images.length) % images.length;
+    const newIndex = (currentIndex - 1 + images.length) % images.length;
     setCurrentIndex(newIndex);
     setSelectedImage(images[newIndex]);
   };
@@ -97,53 +96,46 @@ export default function GalleryPage() {
   };
 
   return (
-    <section className="relative min-h-screen py-28 bg-[#0B0F1A] overflow-hidden text-white">
+    <section className="relative min-h-screen py-28 bg-[#0A0E18] overflow-hidden text-white">
 
       {/* Sparkles */}
       <Sparkles />
 
-      {/* Soft Gold Radial Glow */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.06),transparent_60%)] pointer-events-none"></div>
+      {/* Deep Gold Background Glow */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.10),transparent_65%)]"></div>
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom,rgba(212,175,55,0.06),transparent_70%)]"></div>
 
       <div className="relative z-10">
 
         {/* Heading */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className="text-5xl md:text-6xl font-['Playfair_Display'] text-center
-                     bg-gradient-to-r from-[#D4AF37] via-[#F5E6A5] to-[#D4AF37]
+                     bg-gradient-to-r from-[#D4AF37] via-[#FFF3B0] to-[#D4AF37]
                      bg-clip-text text-transparent mb-6 tracking-wider
-                     drop-shadow-[0_0_20px_rgba(212,175,55,0.5)]"
+                     drop-shadow-[0_0_30px_rgba(212,175,55,0.6)]"
         >
           Divine Gallery
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-center text-gray-400 mb-12 text-lg tracking-wide"
-        >
-          Sacred moments captured in divine light
-        </motion.p>
+        <p className="text-center text-gray-400 mb-14 text-lg tracking-wide">
+          Sacred moments glowing in eternal light
+        </p>
 
-        <div className="flex justify-center mb-16">
-          <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent"></div>
-        </div>
-
-        {/* Category Buttons */}
-        <div className="flex flex-wrap justify-center gap-5 mb-14">
+        {/* Category Buttons - Fully Royal */}
+        <div className="flex flex-wrap justify-center gap-6 mb-16">
           {Object.entries(categories).map(([key, label]) => (
             <motion.button
               key={key}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.07 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveCategory(key)}
-              className={`px-7 py-3 rounded-full border font-medium transition-all ${
+              className={`px-8 py-3 rounded-full font-semibold tracking-wide transition-all duration-300 border ${
                 activeCategory === key
-                  ? "bg-[#D4AF37] text-black shadow-[0_0_20px_rgba(212,175,55,0.4)]"
-                  : "bg-[#111827] text-gray-300 border-[#D4AF37]/30 hover:bg-[#1F2937]"
+                  ? "bg-gradient-to-r from-[#D4AF37] to-[#F5E6A5] text-black shadow-[0_0_25px_rgba(212,175,55,0.6)] border-transparent"
+                  : "bg-[#121826] border-[#D4AF37]/40 text-[#D4AF37] hover:bg-[#1B2335] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]"
               }`}
             >
               {label}
@@ -156,27 +148,33 @@ export default function GalleryPage() {
           key={activeCategory}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="max-w-7xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+          className="max-w-7xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8"
         >
           {images.map((src, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.08, rotateY: 5 }}
+              transition={{ type: "spring", stiffness: 200 }}
               onClick={() => openImage(i)}
-              className="relative overflow-hidden rounded-2xl 
-                         border border-[#D4AF37]/20
-                         bg-[#111827]
-                         shadow-lg cursor-pointer group
-                         hover:shadow-[0_0_25px_rgba(212,175,55,0.25)]
-                         transition"
+              className="relative group cursor-pointer"
             >
-              <Image
-                src={src}
-                alt="Gallery"
-                width={400}
-                height={400}
-                className="w-full h-[220px] object-cover transition duration-500 group-hover:scale-110"
-              />
+              {/* Golden Glow Aura */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#D4AF37] via-[#FFF3B0] to-[#D4AF37] opacity-25 group-hover:opacity-100 blur-xl transition duration-500"></div>
+
+              {/* Card */}
+              <div className="relative overflow-hidden rounded-3xl border-3 border-[#D4AF37]/80 bg-[#111827]/80 backdrop-blur-xl shadow-2xl">
+                
+                {/* Shimmer Effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700"></div>
+
+                <Image
+                  src={src}
+                  alt="Gallery"
+                  width={400}
+                  height={400}
+                  className="w-full h-[240px] object-cover transition duration-700 group-hover:scale-110"
+                />
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -189,14 +187,14 @@ export default function GalleryPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-xl z-50 flex items-center justify-center"
+            className="fixed inset-0 bg-black/95 backdrop-blur-2xl z-50 flex items-center justify-center"
           >
             <div className="absolute inset-0" onClick={closeLightbox} />
 
             <motion.div
-              initial={{ scale: 0.9 }}
+              initial={{ scale: 0.85 }}
               animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
+              exit={{ scale: 0.85 }}
               className="relative w-full max-w-6xl mx-auto px-6 flex items-center justify-center"
             >
               <Image
@@ -204,21 +202,21 @@ export default function GalleryPage() {
                 alt="Selected"
                 width={1400}
                 height={1000}
-                className="max-h-[85vh] w-auto object-contain rounded-2xl shadow-2xl"
+                className="max-h-[85vh] w-auto object-contain rounded-3xl shadow-[0_0_60px_rgba(212,175,55,0.5)]"
               />
 
               {/* Controls */}
-              <div className="fixed top-6 right-6 flex gap-3 z-50">
+              <div className="fixed top-6 right-6 flex gap-4 z-50">
                 <button
                   onClick={downloadImage}
-                  className="p-3 rounded-full bg-[#111827]/80 border border-[#D4AF37]/30 text-white hover:bg-[#1F2937]"
+                  className="p-3 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F5E6A5] text-black shadow-lg hover:scale-110 transition"
                 >
                   <Download className="w-5 h-5" />
                 </button>
 
                 <button
                   onClick={closeLightbox}
-                  className="p-3 rounded-full bg-[#111827]/80 border border-[#D4AF37]/30 text-white hover:bg-[#1F2937]"
+                  className="p-3 rounded-full bg-[#111827] border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#1B2335]"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -226,19 +224,19 @@ export default function GalleryPage() {
 
               <button
                 onClick={prevImage}
-                className="fixed left-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-[#111827]/80 border border-[#D4AF37]/30 text-white hover:bg-[#1F2937] z-50"
+                className="fixed left-8 top-1/2 -translate-y-1/2 p-4 rounded-full bg-[#111827]/80 border border-[#D4AF37]/40 text-[#D4AF37] hover:bg-[#1B2335]"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
               <button
                 onClick={nextImage}
-                className="fixed right-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-[#111827]/80 border border-[#D4AF37]/30 text-white hover:bg-[#1F2937] z-50"
+                className="fixed right-8 top-1/2 -translate-y-1/2 p-4 rounded-full bg-[#111827]/80 border border-[#D4AF37]/40 text-[#D4AF37] hover:bg-[#1B2335]"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
 
-              <div className="fixed bottom-6 left-1/2 -translate-x-1/2 text-white bg-[#111827]/80 backdrop-blur-md px-5 py-2 rounded-full border border-[#D4AF37]/30 text-sm tracking-wide shadow-lg">
+              <div className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#111827]/90 border border-[#D4AF37]/40 px-6 py-2 rounded-full text-[#D4AF37] text-sm shadow-lg">
                 {currentIndex + 1} / {images.length}
               </div>
             </motion.div>

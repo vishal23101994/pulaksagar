@@ -41,7 +41,7 @@ function Sparkles() {
 
 const achievements = [
   {
-    icon: Crown,
+    icon: Award,
     title: "Bharat Gaurav",
     description:
       "Honored with the prestigious Bharat Gaurav recognition for exceptional spiritual leadership and inspiring millions.",
@@ -49,12 +49,20 @@ const achievements = [
       "This honor symbolizes national pride and is conferred upon individuals whose life and service elevate the moral and cultural fabric of the nation.",
   },
   {
-    icon: Star,
-    title: "Rashtra Sant Vishwasant",
+    icon: Award,
+    title: "Rashtra Sant",
     description:
-      "Sacred title awarded for unwavering dedication to moral upliftment.",
+      "Sacred title awarded for unwavering dedication to moral upliftment and spiritual transformation.",
     details:
-      "Recognized for fostering spiritual awakening, ethical awareness, and strengthening values within society.",
+      "This distinction recognizes extraordinary efforts in guiding society toward ethical living, discipline, and spiritual awakening rooted in Jain philosophy.",
+  },
+  {
+    icon: Award,
+    title: "Vishwant",
+    description:
+      "A distinguished national honor acknowledging global spiritual influence and humanitarian vision.",
+    details:
+      "Bestowed upon revered saints whose teachings transcend regional boundaries, spreading universal values of peace, compassion, and non-violence across communities.",
   },
   {
     icon: Award,
@@ -65,7 +73,7 @@ const achievements = [
       "This distinction reflects governmental respect for contributions toward social harmony, culture, and spiritual unity.",
   },
   {
-    icon: BookOpen,
+    icon: Award,
     title: "Author of Spiritual Literature",
     description:
       "Authored dozens of impactful spiritual books.",
@@ -73,7 +81,7 @@ const achievements = [
       "His writings guide seekers toward discipline, self-realization, meditation, and inner awakening.",
   },
   {
-    icon: Users,
+    icon: Award,
     title: "Founder Inspiration – Pulak Manch",
     description:
       "Founder inspiration behind a nationwide spiritual movement.",
@@ -117,7 +125,7 @@ export default function AchievementsPage() {
         </motion.p>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-4 gap-6">
 
           {achievements.map((item, index) => {
             const Icon = item.icon;
@@ -130,11 +138,12 @@ export default function AchievementsPage() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
-                className="relative rounded-3xl p-10 
-                           bg-[#111827] 
-                           border border-[#D4AF37]/20
-                           shadow-[0_20px_60px_rgba(0,0,0,0.4)]
-                           hover:shadow-[0_0_30px_rgba(212,175,55,0.25)]
+                className="gold-card relative rounded-3xl p-10
+                           bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E]
+                           border border-[#3B2A00]/20
+                           text-[#2A2006]
+                           shadow-[0_25px_70px_rgba(0,0,0,0.6)]
+                           hover:shadow-[0_0_40px_rgba(0,0,0,0.6)]
                            transition duration-500
                            overflow-hidden group"
               >
@@ -145,24 +154,24 @@ export default function AchievementsPage() {
 
                   {/* Icon */}
                   <div className="w-16 h-16 rounded-full 
-                                  bg-gradient-to-br from-[#D4AF37] to-[#F5E6A5]
+                                  bg-[#2A2006]
                                   flex items-center justify-center
                                   shadow-lg mb-6">
-                    <Icon size={30} className="text-black" />
+                    <Icon size={30} className="text-[#F5E2A0]" />
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-2xl font-bold text-[#D4AF37] mb-4 tracking-wide">
+                  <h2 className="text-2xl text-black font-semibold mb-4 tracking-wide">
                     {item.title}
                   </h2>
 
                   {/* Short description */}
-                  <p className="text-gray-300 leading-relaxed mb-4 text-sm">
+                  <p className="text-[#3B2A00] leading-relaxed mb-4 text-sm">
                     {item.description}
                   </p>
 
                   {/* Brief detail */}
-                  <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-[#D4AF37]/40 pl-4">
+                  <p className="text-[#3B2A00] text-sm leading-relaxed border-l-2 border-[#2A2006]/40 pl-4">
                     {item.details}
                   </p>
 

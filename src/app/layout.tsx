@@ -10,6 +10,8 @@ import SmoothScrollProvider from "../components/layout/SmoothScrollProvider";
 import { AudioPlayerProvider } from "./providers/AudioPlayerProvider";
 import GlobalAudioPlayer from "../components/GlobalAudioPlayer";
 import SocialSidebar from "../components/layout/SocialSidebar";
+import WhatsAppButton from "../components/layout/WhatsAppButton";
+import BackToTop from "../components/layout/BackToTop";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yourdomain.com"),
@@ -106,7 +108,9 @@ export default function RootLayout({
           <GlobalAudioPlayer />
         </AudioPlayerProvider>
 
+        <BackToTop />
         <SocialSidebar />
+        <WhatsAppButton />
       </body>
     </html>
   );

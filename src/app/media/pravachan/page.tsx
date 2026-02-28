@@ -41,18 +41,6 @@ const OTHER_CHANNELS = [
     url: "https://www.youtube.com/channel/UC-ds1gWjZnDGv1UaLT2uosA",
   },
   {
-    name: "Kids Masti World",
-    url: "https://www.youtube.com/channel/UCYQlyZBYGd5hcPwXzd4odFg",
-  },
-  {
-    name: "Jyotish Samadhan",
-    url: "https://www.youtube.com/channel/UCL2DHB7Ej6IKc42v8USR50Q",
-  },
-  {
-    name: "Aakhir Aisa Kyon",
-    url: "https://www.youtube.com/channel/UCSGrU6SXeBkvZcIDYsU_7hg",
-  },
-  {
     name: "Pulak Sagar Shorts",
     url: "https://www.youtube.com/channel/UCS6WvgPNmY_lZ1eh-A_lQYw",
   },
@@ -149,7 +137,7 @@ export default function JinsharnamMediaSpiritual() {
       <Script src="https://accounts.google.com/gsi/client" strategy="afterInteractive" />
 
       {/* Sticky Header */}
-      <header className="sticky top-[90px] z-40 bg-[#111827]/80 backdrop-blur-xl border-b border-[#D4AF37]/30">
+      <header className="sticky top-0 z-30 bg-[#111827]/80 backdrop-blur-xl border-b border-[#D4AF37]/30">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
           {channel && (
             <img
