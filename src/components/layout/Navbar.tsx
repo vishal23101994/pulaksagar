@@ -142,6 +142,8 @@ export default function Navbar() {
 
             <NavItem href="/gallery" label="Gallery" pathname={pathname} />
             <NavItem href="/achievements" label="Achievements" pathname={pathname} />
+            <NavItem href="/sahitya" label="Sahitya" pathname={pathname} />
+            <NavItem href="/directory" label="Directory" pathname={pathname} />
             <NavItem href="/contact" label="Contact" pathname={pathname} />
           </div>
 
@@ -169,6 +171,8 @@ export default function Navbar() {
                 <MobileItem href="/about" label="About" onClick={() => setMobileOpen(false)} />
                 <MobileItem href="/gallery" label="Gallery" onClick={() => setMobileOpen(false)} />
                 <MobileItem href="/achievements" label="Achievements" onClick={() => setMobileOpen(false)} />
+                <MobileItem href="/sahitya" label="Sahitya" onClick={() => setMobileOpen(false)} />
+                <MobileItem href="/directory" label="Directory" onClick={() => setMobileOpen(false)} />
                 <MobileItem href="/contact" label="Contact" onClick={() => setMobileOpen(false)} />
 
               </div>

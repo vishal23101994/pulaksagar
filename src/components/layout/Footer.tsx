@@ -20,16 +20,6 @@ export default function Footer() {
   const footerLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Achievements", path: "/achievements" },
-    { name: "Contact", path: "/contact" },
-    {
-      name: "Organization",
-      subLinks: [
-        { name: "Jinsharnam Tirth", path: "/organization/jinsharnam-tirth" },
-        { name: "Pulak Manch", path: "/organization/pulak-manch" },
-      ],
-    },
     {
       name: "Media",
       subLinks: [
@@ -37,6 +27,18 @@ export default function Footer() {
         { name: "Bhajan", path: "/media/bhajan" },
       ],
     },
+    {
+      name: "Organization",
+      subLinks: [
+        { name: "Jinsharnam Tirth", path: "/organization/jinsharnam-tirth" },
+        { name: "Pulak Manch", path: "/organization/pulak-manch" },
+      ],
+    },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Achievements", path: "/achievements" },
+    { name: "Sahitya", path: "/sahitya" },
+    { name: "Directory", path: "/directory" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const socialLinks = [
@@ -51,7 +53,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden pt-16 text-black font-medium">
+    <footer className="relative overflow-hidden pt-10 text-black font-medium">
 
       {/* Metallic Gold Background */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#B8860B] via-[#E6C97A] to-[#B8860B]" />
@@ -64,10 +66,10 @@ export default function Footer() {
       {/* Elegant Top Border */}
       <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#8B6F1E] to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 space-y-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 space-y-8">
 
         {/* Logo + Message */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 border-b border-black/30 pb-10 text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 border-b border-black/30 pb-6 text-center md:text-left">
 
           <div className="flex flex-col sm:flex-row items-center gap-6">
 
@@ -106,7 +108,7 @@ export default function Footer() {
         </div>
 
         {/* Explore Section */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-x-6 text-sm border-b border-black/30 pb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-6 gap-x-6 text-sm border-b border-black/30 pb-6">
 
           {footerLinks.map((item, idx) => (
             <div key={idx}>
@@ -138,15 +140,26 @@ export default function Footer() {
         </div>
 
         {/* Contact + Social */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 border-b border-[#2A2006]/40 pb-10 text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 border-b border-[#2A2006]/40 pb-6 text-center md:text-left">
 
           <div className="text-m text-black font-medium space-y-4 w-full md:w-1/2">
 
-            <p className="flex flex-col sm:flex-row items-center sm:items-start gap-3">
-              <FaMapMarkerAlt className="text-black mt-1" />
+            <p className="flex flex-col sm:flex-row items-start gap-3 leading-relaxed">
+              <FaMapMarkerAlt className="text-black mt-1 flex-shrink-0" />
               <span>
-                Vatsalya Bhawan, P-75, Street Number 5,  
-                Bihari Colony Extension, Bihari Colony,<br />Shahdara, Delhi - 110032
+                <span className="font-semibold">
+                  Central Office & Media Partner - Jinsharnam Media
+                </span>
+                <br />
+                Vatsalya Bhawan
+                <br />
+                P-75, Street No 5, Bihari Colony Extension,
+                <br />
+                Bihari Colony, Shahdara
+                <br />
+                Delhi – 110032
+                <br />
+                India
               </span>
             </p>
 
@@ -159,6 +172,7 @@ export default function Footer() {
               <FaEnvelope className="text-black" />
               jinsharnam@gmail.com
             </p>
+
           </div>
 
           {/* Social Icons (Brand Colors Restored) */}

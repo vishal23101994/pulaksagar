@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Send } from "lucide-react";
+import { MapPin, Mail, Phone, Send, TramFront, Train, Bus } from "lucide-react";
 
 /* ---------------- Sparkles Background ---------------- */
 function Sparkles() {
@@ -241,6 +241,163 @@ export default function ContactPage() {
             </form>
           </motion.div>
         </div>
+
+        {/* ================= HOW TO REACH SECTION ================= */}
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="relative z-10 mt-20 w-full max-w-6xl mx-auto
+          bg-gradient-to-br from-[#F5E6A5] via-[#D4AF37] to-[#B8962E]
+          border border-[#B8860B]/60
+          rounded-[2.5rem]
+          shadow-[0_40px_120px_rgba(212,175,55,0.35)]
+          px-8 md:px-14 py-14"
+        >
+
+          {/* Heading */}
+          <h2
+          className="
+          text-center font-serif
+          text-4xl md:text-5xl
+          bg-gradient-to-r from-black via-[#3A2A00] to-black
+          bg-clip-text text-transparent
+          drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]
+          mb-14
+          tracking-wide
+          ">
+            How to Reach Our Office
+          </h2>
+          <div className="flex justify-center mb-12">
+            <div className="w-32 h-[2px] bg-gradient-to-r from-transparent via-[#B8860B] to-transparent"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {/* METRO CARD */}
+            <div className="rounded-2xl p-6
+                            bg-gradient-to-b from-[#0F0C05] to-[#1A1306]
+                            border border-[#D4AF37]/40
+                            shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+                            hover:shadow-[0_30px_80px_rgba(212,175,55,0.25)]
+                            hover:border-[#D4AF37]
+                            hover:scale-[1.05]
+                            transition-all duration-500">
+
+              <div className="flex items-center gap-3 mb-4">
+                <TramFront
+                size={34}
+                className="text-[#D4AF37] drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]"
+                />
+                <h3 className="
+                text-xl
+                font-semibold
+                text-[#D4AF37]
+                tracking-wide
+                drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]
+                ">
+                  Metro Stations
+                </h3>
+              </div>
+
+              <ul className="space-y-4 text-sm leading-relaxed">
+
+                <li>
+                  <p className="font-semibold">Shahdara Metro Station</p>
+                  <p className="text-[#FFF3C4]/90">
+                    Red Line - 1.2 Km <br />
+                    Auto / E-rickshaw easily available
+                  </p>
+                </li>
+
+                <li>
+                  <p className="font-semibold">Welcome Metro Station</p>
+                  <p className="text-[#FFF3C4]/90">
+                    Red Line / Pink Line (Interchange) <br />
+                    2.3 Km Excellent connectivity
+                  </p>
+                </li>
+
+                <li>
+                  <p className="font-semibold">East Azad Nagar Metro Station</p>
+                  <p className="text-[#FFF3C4]/90">
+                    Pink Line - 2.0 Km <br />
+                    Convenient from North & East Delhi
+                  </p>
+                </li>
+
+              </ul>
+            </div>
+
+            {/* RAILWAY CARD */}
+            <div className="rounded-2xl p-6
+                            bg-gradient-to-b from-[#0F0C05] to-[#1A1306]
+                            border border-[#D4AF37]/40
+                            shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+                            hover:shadow-[0_30px_80px_rgba(212,175,55,0.25)]
+                            hover:border-[#D4AF37]
+                            hover:scale-[1.05]
+                            transition-all duration-500">
+
+              <div className="flex items-center gap-3 mb-4">
+                <Train className="text-[#D4AF37]" size={28} />
+                <h3 className="
+                text-xl
+                font-semibold
+                text-[#D4AF37]
+                tracking-wide
+                drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]
+                ">
+                  Railway Station
+                </h3>
+              </div>
+
+              <p className="font-semibold">Shahdara Junction (SDA)</p>
+
+              <p className="text-sm text-[#FFF3C4]/90 mt-1">
+                1.5 Km distance <br />
+                5–10 minutes by auto or cab
+              </p>
+
+            </div>
+
+            {/* BUS CARD */}
+            <div className="rounded-2xl p-6
+                            bg-gradient-to-b from-[#0F0C05] to-[#1A1306]
+                            border border-[#D4AF37]/40
+                            shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+                            hover:shadow-[0_30px_80px_rgba(212,175,55,0.25)]
+                            hover:border-[#D4AF37]
+                            hover:scale-[1.05]
+                            transition-all duration-500">
+
+              <div className="flex items-center gap-3 mb-4">
+                <Bus className="text-[#D4AF37]" size={28} />
+                <h3 className="
+                text-xl
+                font-semibold
+                text-[#D4AF37]
+                tracking-wide
+                drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]
+                ">
+                  Bus Stop
+                </h3>
+              </div>
+
+              <p className="font-semibold">Bihari Colony Bus Stop</p>
+
+              <p className="text-sm text-[#FFF3C4]/90 mt-1">
+                Walking distance <br />
+                2–3 minutes from office
+              </p>
+
+            </div>
+
+          </div>
+
+        </motion.section>
 
         {/* ================= MAP SECTION ================= */}
         <motion.div
