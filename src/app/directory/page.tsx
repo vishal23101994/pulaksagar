@@ -43,6 +43,12 @@ const highlight = (text: string, q: string) => {
   );
 };
 
+const goldBtn =
+  "px-4 py-2 rounded-full bg-[#D4AF37] text-black font-semibold border border-[#D4AF37] hover:bg-[#f5d97b] transition shadow-[0_0_10px_rgba(212,175,55,0.4)]";
+
+const blackBtn =
+  "px-4 py-2 rounded-full bg-black text-[#D4AF37] font-semibold border border-[#D4AF37]/40 hover:bg-[#141414] transition shadow-[0_0_12px_rgba(212,175,55,0.3)]";
+
 /* ---------------- Premium Sparkle Background ---------------- */
 function Sparkles() {
   const sparkles = Array.from({ length: 120 });
@@ -253,29 +259,29 @@ export default function DirectoryPage() {
                 title: "Ekta Directory – Gents (2025)",
                 subtitle: "View & Download PDF",
                 icon: "📄",
-                href: "/directory/Ekta_Directory_Gents_2025.pdf",
-                img: "/directory/ekta-gents.jpeg",
+                href: "https://jinsharnammedia.com/directory/Ekta_Directory_Gents_2025.pdf",
+                img: "https://jinsharnammedia.com/directory/ekta-gents.jpeg",
               },
               {
                 title: "Ekta Directory – Ladies (2025)",
                 subtitle: "View & Download PDF",
                 icon: "📄",
-                href: "/directory/Ekta_Directory_Ladies_2025.pdf",
-                img: "/directory/ekta-ladies.jpeg",
+                href: "https://jinsharnammedia.com/directory/Ekta_Directory_Ladies_2025.pdf",
+                img: "https://jinsharnammedia.com/directory/ekta-ladies.jpeg",
               },
               {
                 title: "Pulak Awards (2025)",
                 subtitle: "Award Ceremony List",
                 icon: "🏆",
-                href: "/directory/Pulak_Award-2025.pdf",
-                img: "/directory/pulak-awards.png",
+                href: "https://jinsharnammedia.com/directory/Pulak_Award-2025.pdf",
+                img: "https://jinsharnammedia.com/directory/pulak-awards.png",
               },
               {
                 title: "Manch Masiki (2025)",
                 subtitle: "Monthly Magazine",
                 icon: "📰",
-                href: "/directory/Manch_Masiki-2025.pdf",
-                img: "/directory/manch-masiki.jpeg",
+                href: "https://jinsharnammedia.com/directory/Manch_Masiki-2025.pdf",
+                img: "https://jinsharnammedia.com/directory/manch-masiki.jpeg",
               },
             ].map((item, i) => (
               <a
@@ -308,9 +314,13 @@ export default function DirectoryPage() {
                     {item.title}
                   </h3>
 
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-600 mt-2 mb-4">
                     {item.subtitle}
                   </p>
+
+                  <button className={blackBtn}>
+                    View Document
+                  </button>
                 </div>
               </a>
             ))}
@@ -321,8 +331,8 @@ export default function DirectoryPage() {
         {/* SECOND EXCEL TABLE */}
         <div className="mt-12 bg-gradient-to-b from-[#B8860B] to-[#f5d97b] text-black rounded-2xl shadow-2xl border border-[#D4AF37]/40">
           {/* HEADER + EXPORT */}
-          <div className="relative p-5 border-b border-[#E7D6BF]">
-            <h2 className="text-2xl font-serif text-[#6A0000] text-center">
+          <div className="relative p-5 border-b border-[#D4AF37]/30">
+            <h2 className="text-2xl font-serif text-[#3a1f00] text-center font-semibold">
               Rashtriya Karyakarini List
             </h2>
             {/* SHEET TOGGLE */}
@@ -335,8 +345,8 @@ export default function DirectoryPage() {
                     px-5 py-2 rounded-full text-sm font-semibold transition
                     ${
                       activeSheet === sheet
-                        ? "bg-[#6A0000] text-[#FFF1D6] shadow"
-                        : "border border-[#D4AF37] text-[#6A0000] hover:bg-[#FFF1D6]"
+                        ? "bg-black text-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.4)]"
+                        : "bg-black text-[#D4AF37] border border-black hover:bg-[#141414]"
                     }
                   `}
                 >
@@ -347,7 +357,7 @@ export default function DirectoryPage() {
 
             <button
               onClick={exportSimpleExcel}
-              className="absolute right-5 top-1/2 -translate-y-1/2 px-4 py-2 rounded-full bg-[#6A0000] text-[#FFF1D6] font-semibold hover:bg-[#8B0000] transition"
+              className="absolute right-5 top-1/2 -translate-y-1/2 px-4 py-2 rounded-full bg-black text-[#D4AF37] font-semibold border border-black hover:bg-[#141414] transition shadow-[0_0_10px_rgba(212,175,55,0.3)]"
             >
               Export Excel
             </button>
@@ -355,12 +365,12 @@ export default function DirectoryPage() {
           {/* SCROLL AREA */}
           <div className="max-h-[50vh] overflow-y-auto">
             <table className="w-full text-sm border-collapse">
-              <thead className="sticky top-0 bg-[#D4AF37] text-black z-10">
+              <thead className="sticky top-0 bg-gradient-to-r from-[#c8a530] via-[#e6c45c] to-[#c8a530] text-black z-10">
                 <tr>
                   {["S.No", "Name", "Designation", "Address", "Mob"].map((h) => (
                     <th
                       key={h}
-                      className="px-4 py-3 text-left text-xs uppercase tracking-wider border border-[#E7D6BF]"
+                      className="px-4 py-3 text-left text-xs uppercase tracking-wider border border-[#D4AF37]/25"
                     >
                       {h}
                     </th>
@@ -379,21 +389,21 @@ export default function DirectoryPage() {
                   (simpleData[activeSheet] || []).map((row, i) => (
                     <tr
                       key={i}
-                      className="odd:bg-[#f5d97b] even:bg-[#e6c45c] hover:bg-[#ffe8a3]"
+                      className="odd:bg-[#111111] even:bg-[#181818] text-[#E8D7A0] hover:bg-[#2a1f07] transition duration-200"
                     >
-                      <td className="px-4 py-3 border border-[#E7D6BF]">
+                      <td className="px-4 py-3 border border-[#D4AF37]/25">
                         {row["S.No"]}
                       </td>
-                      <td className="px-4 py-3 border border-[#E7D6BF]">
+                      <td className="px-4 py-3 border border-[#D4AF37]/25">
                         {row.Name}
                       </td>
-                      <td className="px-4 py-3 border border-[#E7D6BF]">
+                      <td className="px-4 py-3 border border-[#D4AF37]/25">
                         {row.Designation}
                       </td>
-                      <td className="px-4 py-3 border border-[#E7D6BF]">
+                      <td className="px-4 py-3 border border-[#D4AF37]/25">
                         {row.Address}
                       </td>
-                      <td className="px-4 py-3 border border-[#E7D6BF]">
+                      <td className="px-4 py-3 border border-[#D4AF37]/25">
                         {row.Mob}
                       </td>
                     </tr>
@@ -410,7 +420,7 @@ export default function DirectoryPage() {
             <h2 className="text-xl md:text-2xl font-serif text-[#6A0000]">
               Ekta Directory
             </h2>
-            <div className="w-20 h-[2px] bg-[#D4AF37] mx-auto mt-2" />
+            <div className="w-20 h-[2px] bg-gradient-to-r from-[#c8a530] via-[#e6c45c] to-[#c8a530] mx-auto mt-2" />
           </div>
           <div className="flex flex-wrap gap-3 items-center">
             <input
@@ -431,7 +441,7 @@ export default function DirectoryPage() {
                   organization: "",
                 });
               }}
-              className="px-5 py-2 rounded-full border border-[#D4AF37] text-[#6A0000] hover:bg-[#FFF1D6] transition"
+              className={blackBtn}
             >
               Reset
             </button>
@@ -439,23 +449,23 @@ export default function DirectoryPage() {
             <div className="flex flex-wrap gap-3 justify-end">
               <button
                 onClick={exportExcel}
-                className="px-4 py-2 rounded-full bg-[#6A0000] text-[#FFF1D6] font-semibold hover:bg-[#8B0000] transition"
+                className={blackBtn}
               >
                 Export Excel
               </button>
 
               <a
-                href="/directory/Ekta_Directory_Gents_2025.pdf"
+                href="https://jinsharnammedia.com/directory/Ekta_Directory_Gents_2025.pdf"
                 target="_blank"
-                className="px-4 py-2 rounded-full border border-[#6A0000] text-[#6A0000] font-semibold hover:bg-[#FFF1D6] transition"
+                className={blackBtn}
               >
                 Gents PDF
               </a>
 
               <a
-                href="/directory/Ekta_Directory_Ladies_2025.pdf"
+                href="https://jinsharnammedia.com/directory/Ekta_Directory_Ladies_2025.pdf"
                 target="_blank"
-                className="px-4 py-2 rounded-full border border-[#D4AF37] text-[#6A0000] font-semibold hover:bg-[#FFF1D6] transition"
+                className={blackBtn}
               >
                 Ladies PDF
               </a>
@@ -472,7 +482,7 @@ export default function DirectoryPage() {
                   onChange={(e) =>
                     setFilters({ ...filters, [k]: e.target.value })
                   }
-                  className="px-4 py-2 rounded-full bg-[#FFF1D6] border border-[#E7D6BF] text-sm"
+                  className="px-4 py-2 rounded-full bg-[#FFF1D6] border border-[#D4AF37]/25 text-sm"
                 >
                   <option value="">All {k}s</option>
                   {[...new Set(data.map((d) => d[k]).filter(Boolean))].map(
@@ -489,12 +499,12 @@ export default function DirectoryPage() {
         {/* TABLE */}
         <div
           ref={tableRef}
-          className="hidden md:block bg-gradient-to-b from-[#D4AF37] to-[#f5d97b] text-black rounded-2xl shadow-2xl border border-[#D4AF37]/40 max-h-[70vh] overflow-y-auto"
+          className="hidden md:block bg-[#0f0f0f] text-[#E8D7A0] rounded-2xl shadow-2xl border border-[#D4AF37]/30 max-h-[70vh] overflow-y-auto"
         >
           <table className="w-full table-fixed text-sm border-collapse">
             <thead
-              className={`sticky top-0 bg-[#D4AF37] ${
-                scrolled ? "shadow-md" : ""
+              className={`sticky top-0 bg-[#D4AF37] text-black ${
+                scrolled ? "shadow-[0_6px_20px_rgba(212,175,55,0.4)]" : ""
               }`}
             >
               <tr>
@@ -515,7 +525,7 @@ export default function DirectoryPage() {
                     key={k}
                     style={{ width: w }}
                     onClick={() => toggleSort(k as ColumnKey)}
-                    className="px-3 py-3 text-left text-xs tracking-wider uppercase border border-[#E7D6BF] cursor-pointer"
+                    className="px-3 py-3 text-left text-xs tracking-wider uppercase border border-[#D4AF37]/25 cursor-pointer"
                   >
                     {k.replace(/_/g, " ")}
                   </th>
@@ -534,7 +544,7 @@ export default function DirectoryPage() {
                 sorted.map((m, i) => (
                   <tr
                     key={i}
-                    className="odd:bg-[#f5d97b] even:bg-[#e6c45c] hover:bg-[#ffe8a3] transition"
+                    className="odd:bg-[#121212] even:bg-[#1a1a1a] hover:bg-[#2a1f07] transition duration-200"
                   >
                     {([
                       m.zone,
@@ -551,7 +561,7 @@ export default function DirectoryPage() {
                     ] as (string | null | undefined)[]).map((v, idx) => (
                       <td
                         key={idx}
-                        className={`px-3 py-3 border border-[#E7D6BF] ${
+                        className={`px-3 py-3 border border-[#D4AF37]/25 ${
                           idx === 10 ? "break-all text-blue-700" : "break-words"
                         }`}
                         dangerouslySetInnerHTML={{
