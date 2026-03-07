@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Crown, Star, Award, BookOpen, Users } from "lucide-react";
+import { useState } from "react";
+import { createPortal } from "react-dom";
 
 /* ---------------- Sparkles Background ---------------- */
 function Sparkles() {
@@ -98,7 +100,20 @@ const achievements = [
   },
 ];
 
+const awardImages = [
+  { src: "/images/awards/Bharat Gaurav - Medal.jpeg", title: "Bharat Gaurav Medal" },
+  { src: "/images/awards/Bharat Gaurav.jpeg", title: "Bharat Gaurav Award" },
+  { src: "/images/awards/Rashtra Sant Alankaran.jpeg", title: "Rashtra Sant Alankaran" },
+  { src: "/images/awards/Vishva Sant Alankaran.jpeg", title: "Vishva Sant Alankaran" },
+  { src: "/images/awards/Shaanti Doot.jpeg", title: "Shaanti Doot Sammaan" },
+];
+
 export default function AchievementsPage() {
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    title: string;
+  } | null>(null);
+  const [zoom, setZoom] = useState(1);
   return (
     <section className="relative min-h-screen py-28 px-6 bg-[#0B0F1A] overflow-hidden text-white">
 
@@ -133,7 +148,7 @@ export default function AchievementsPage() {
         </motion.p>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-4 gap-6 mb-24">
 
           {achievements.map((item, index) => {
             const Icon = item.icon;
@@ -188,6 +203,137 @@ export default function AchievementsPage() {
             );
           })}
         </div>
+        {/* ================= AWARDS GALLERY ================= */}
+
+        <div className="mt-32">
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-['Playfair_Display'] text-center mb-16
+                       bg-gradient-to-r from-[#D4AF37] via-[#F5E6A5] to-[#D4AF37]
+                       bg-clip-text text-transparent"
+          >
+            Award Certificates
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
+
+            {awardImages.map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                viewport={{ once: true }}
+                onClick={() => {
+                  setZoom(1);
+                  setSelectedImage(img);
+                }}
+                className="relative cursor-pointer group"
+              >
+
+                {/* GOLD FRAME */}
+                <div className="p-[10px] rounded-xl
+                                bg-gradient-to-b from-[#F5E6A5] via-[#D4AF37] to-[#8B6B1F]
+                                shadow-[0_20px_60px_rgba(0,0,0,0.9)]
+                                group-hover:shadow-[0_0_60px_rgba(212,175,55,0.6)]
+                                transition duration-500">
+
+                  {/* INNER FRAME */}
+                  <div className="bg-[#05070F] p-4 rounded-lg">
+
+                    {/* IMAGE */}
+                    <img
+                      src={img.src}
+                      alt={img.title}
+                      className="w-full h-[420px] object-contain
+                                 transition duration-700
+                                 group-hover:scale-105"
+                    />
+
+                  </div>
+
+                </div>
+
+                {/* TITLE */}
+                <p className="text-center text-[#E6D3A3] mt-6 text-lg tracking-wide">
+                  {img.title}
+                </p>
+
+              </motion.div>
+            ))}
+
+          </div>
+        </div>
+        {selectedImage &&
+          createPortal(
+            <div className="fixed inset-0 z-[2147483647] bg-black/95 backdrop-blur-lg flex items-center justify-center">
+
+              {/* CONTROL PANEL */}
+              <div className="absolute top-6 right-6 flex items-center gap-3
+                              bg-black/50 backdrop-blur-md
+                              border border-white/10
+                              px-3 py-2 rounded-full shadow-xl">
+
+                <button
+                  onClick={() => setZoom((z) => Math.min(z + 0.2, 4))}
+                  className="w-10 h-10 rounded-full
+                             bg-[#D4AF37] text-black
+                             flex items-center justify-center
+                             font-bold hover:scale-110 transition"
+                >
+                  +
+                </button>
+
+                <button
+                  onClick={() => setZoom((z) => Math.max(z - 0.2, 1))}
+                  className="w-10 h-10 rounded-full
+                             bg-[#D4AF37] text-black
+                             flex items-center justify-center
+                             font-bold hover:scale-110 transition"
+                >
+                  −
+                </button>
+
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="w-10 h-10 rounded-full
+                             bg-white/10 text-white
+                             flex items-center justify-center
+                             hover:bg-red-500 transition"
+                >
+                  ✕
+                </button>
+
+              </div>
+
+              {/* IMAGE */}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.35 }}
+                className="flex flex-col items-center max-w-[90vw] max-h-[90vh]"
+              >
+
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  style={{ transform: `scale(${zoom})` }}
+                  className="max-h-[80vh] object-contain transition duration-300 select-none"
+                />
+
+                {/* TITLE */}
+                <p className="text-[#E6D3A3] text-lg mt-6 tracking-wide text-center">
+                  {selectedImage.title}
+                </p>
+
+              </motion.div>
+
+            </div>,
+            document.body
+          )}
       </div>
     </section>
   );
