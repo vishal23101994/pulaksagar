@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
+import TrusteeSection from "../../../components/layout/TrusteeSection";
 import {
   ChevronLeft,
   ChevronRight,
@@ -580,112 +581,7 @@ export default function JinsharnamTirthPage() {
       </RoyalSection>
 
       {/* 🙏 Trustee Committee Section */}
-      <RoyalSection>
-        <div className="flex justify-center items-center">
-          <div className="max-w-6xl mx-auto px-6">
-
-            {/* Heading + Export */}
-            <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-              <h2 className="text-3xl font-serif text-[#FFD97A] drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] font-semibold flex items-center gap-2">
-                <Users className="text-amber-700" size={30} />
-                Trustee Committee
-              </h2>
-
-              <button
-                onClick={handleExportToExcel}
-                className="flex items-center gap-2 px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800 transition"
-              >
-                <Download size={18} />
-                Export to Excel
-              </button>
-            </div>
-
-            {/* Trustee Table */}
-            <div className="overflow-x-auto shadow-lg rounded-xl border border-amber-200 bg-gradient-to-br from-[#1B1B2F] to-[#16213E] text-amber-100 shadow-[0_20px_60px_rgba(212,175,55,0.25)]">
-              <table className="min-w-full text-[#FFD97A] drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] text-left text-sm">
-                <thead className="bg-gradient-to-r from-[#D4AF37] to-[#F7E7CE] text-black font-semibold">
-                  <tr>
-                    <th className="py-2 px-3 border-b border-amber-300">S.No</th>
-                    <th className="py-2 px-3 border-b border-amber-300">Name</th>
-                    <th className="py-2 px-3 border-b border-amber-300">
-                      Designation
-                    </th>
-                    <th className="py-2 px-3 border-b border-amber-300">Address</th>
-                    <th className="py-2 px-3 border-b border-amber-300">Mobile</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {currentItems.map((t, i) => (
-                    <tr
-                      key={i}
-                      className={`hover:bg-[#D4AF37]/10 transition ${
-                        i % 2 === 0 ? "bg-[#1B1B2F]" : "bg-[#16213E]"
-                      }`}
-                    >
-                      <td className="py-2 px-3 border-b border-amber-200">
-                        {startIndex + i + 1}
-                      </td>
-
-                      <td className="py-2 px-3 border-b border-amber-200 font-medium">
-                        {t.NAME || "-"}
-                      </td>
-
-                      <td className="py-2 px-3 border-b border-amber-200">
-                        {t.DESIGNATION || "-"}
-                      </td>
-
-                      <td className="py-2 px-3 border-b border-amber-200">
-                        {t.ADDRESS || "-"}
-                      </td>
-
-                      <td className="py-2 px-3 border-b border-amber-200">
-                        {t.MOBILE || "-"}
-                      </td>
-                    </tr>
-                  ))}
-
-                  {currentItems.length === 0 && (
-                    <tr>
-                      <td
-                        colSpan={5}
-                        className="py-6 text-center text-gray-500"
-                      >
-                        No trustee data available
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex justify-center mt-8 gap-4 sticky bottom-4 bg-[#000000]/80 border border-[#D4AF37]/30 py-2 backdrop-blur-sm rounded-lg">
-                <button
-                  disabled={currentPage === 1}
-                  onClick={() => setCurrentPage((p) => p - 1)}
-                  className="px-4 py-2 bg-[#4B1E00] text-yellow-100 rounded-md hover:bg-yellow-400 hover:text-[#FFD97A] drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] disabled:opacity-50"
-                >
-                  Previous
-                </button>
-
-                <span className="text-[#FFD97A] drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] font-medium">
-                  Page {currentPage} of {totalPages}
-                </span>
-
-                <button
-                  disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage((p) => p + 1)}
-                  className="px-4 py-2 bg-[#4B1E00] text-yellow-100 rounded-md hover:bg-yellow-400 hover:text-[#FFD97A] drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] disabled:opacity-50"
-                >
-                  Next
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      </RoyalSection>
+      <TrusteeSection />
 
       {/* 🙏 Donation Section */}
       <div id="donate-section">
