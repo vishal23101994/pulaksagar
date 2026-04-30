@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Crown, Star, Award, BookOpen, Users } from "lucide-react";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -43,56 +42,56 @@ function Sparkles() {
 
 const achievements = [
   {
-    icon: Award,
     title: "Bharat Gaurav",
+    image: "/images/awards/Bharat Gaurav.jpeg",
     description:
       "Honored with the prestigious Bharat Gaurav recognition for exceptional spiritual leadership and inspiring millions.",
     details:
       "This honor symbolizes national pride and is conferred upon individuals whose life and service elevate the moral and cultural fabric of the nation.",
   },
   {
-    icon: Award,
     title: "Rashtra Sant",
+    image: "/images/awards/Rashtra Sant Alankaran.jpeg",
     description:
       "Sacred title awarded for unwavering dedication to moral upliftment and spiritual transformation.",
     details:
       "This distinction recognizes extraordinary efforts in guiding society toward ethical living, discipline, and spiritual awakening rooted in Jain philosophy.",
   },
   {
-    icon: Award,
     title: "Vishva Sant",
+    image: "/images/awards/Vishva Sant Alankaran.jpeg",
     description:
       "A distinguished national honor acknowledging global spiritual influence and humanitarian vision.",
     details:
       "Bestowed upon revered saints whose teachings transcend regional boundaries, spreading universal values of peace, compassion, and non-violence across communities.",
   },
   {
-    icon: Award,
     title: "Shanti Doot Sammaan",
+    image: "/images/awards/Shaanti Doot.jpeg",
     description:
       "An esteemed recognition celebrating the embodiment of peace, dharma, and spiritual guidance.",
     details:
       "Presented to distinguished saints whose divine discourse and humanitarian service nurture inner transformation, ethical living, and the timeless principles of Jain Dharma.",
   },
   {
-    icon: Award,
     title: "Rajkiya Atithi (Multiple States)",
+    image: "/images/awards/award.png",
     description:
       "Welcomed as State Guest in multiple regions.",
     details:
       "This distinction reflects governmental respect for contributions toward social harmony, culture, and spiritual unity.",
   },
   {
-    icon: Award,
     title: "Author of Spiritual Literature",
+    image: "/images/awards/img3.jpeg",
     description:
       "Authored dozens of impactful spiritual books.",
     details:
       "His writings guide seekers toward discipline, self-realization, meditation, and inner awakening.",
   },
   {
-    icon: Award,
     title: "Founder Inspiration – Pulak Manch",
+    image: "/images/awards/pulakmanch.png",
     description:
       "Founder inspiration behind a nationwide spiritual movement.",
     details:
@@ -151,7 +150,6 @@ export default function AchievementsPage() {
         <div className="grid md:grid-cols-4 gap-6 mb-24">
 
           {achievements.map((item, index) => {
-            const Icon = item.icon;
 
             return (
               <motion.div
@@ -161,7 +159,7 @@ export default function AchievementsPage() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
-                className="gold-card relative rounded-3xl p-10
+                className="gold-card relative rounded-3xl p-8
                            bg-gradient-to-b from-[#F5E2A0] via-[#E0C97A] to-[#C6A75E]
                            border border-[#3B2A00]/20
                            text-[#2A2006]
@@ -175,13 +173,24 @@ export default function AchievementsPage() {
 
                 <div className="relative z-10">
 
-                  {/* Icon */}
-                  <div className="w-16 h-16 rounded-full 
-                                  bg-[#2A2006]
-                                  flex items-center justify-center
-                                  shadow-lg mb-6">
-                    <Icon size={30} className="text-[#F5E2A0]" />
-                  </div>
+                  <div
+                    onClick={() => {
+                      setZoom(1);
+                      setSelectedImage({
+                        src: item.image,
+                        title: item.title,
+                      });
+                    }}
+                    className="cursor-pointer mb-6 group/image"
+                  >
+                    <div className="rounded-2xl overflow-hidden border border-[#3B2A00]/15 shadow-lg bg-white">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-[180px] object-contain p-3 transition duration-500 group-hover/image:scale-105"
+                      />
+                    </div>
+                  </div>                  
 
                   {/* Title */}
                   <h2 className="text-2xl text-black font-semibold mb-4 tracking-wide">
@@ -202,71 +211,7 @@ export default function AchievementsPage() {
               </motion.div>
             );
           })}
-        </div>
-        {/* ================= AWARDS GALLERY ================= */}
-
-        <div className="mt-32">
-
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-['Playfair_Display'] text-center mb-16
-                       bg-gradient-to-r from-[#D4AF37] via-[#F5E6A5] to-[#D4AF37]
-                       bg-clip-text text-transparent"
-          >
-            Award Certificates
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
-
-            {awardImages.map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                viewport={{ once: true }}
-                onClick={() => {
-                  setZoom(1);
-                  setSelectedImage(img);
-                }}
-                className="relative cursor-pointer group"
-              >
-
-                {/* GOLD FRAME */}
-                <div className="p-[10px] rounded-xl
-                                bg-gradient-to-b from-[#F5E6A5] via-[#D4AF37] to-[#8B6B1F]
-                                shadow-[0_20px_60px_rgba(0,0,0,0.9)]
-                                group-hover:shadow-[0_0_60px_rgba(212,175,55,0.6)]
-                                transition duration-500">
-
-                  {/* INNER FRAME */}
-                  <div className="bg-[#05070F] p-4 rounded-lg">
-
-                    {/* IMAGE */}
-                    <img
-                      src={img.src}
-                      alt={img.title}
-                      className="w-full h-[420px] object-contain
-                                 transition duration-700
-                                 group-hover:scale-105"
-                    />
-
-                  </div>
-
-                </div>
-
-                {/* TITLE */}
-                <p className="text-center text-[#E6D3A3] mt-6 text-lg tracking-wide">
-                  {img.title}
-                </p>
-
-              </motion.div>
-            ))}
-
-          </div>
-        </div>
+        </div>        
         {selectedImage &&
           createPortal(
             <div className="fixed inset-0 z-[2147483647] bg-black/95 backdrop-blur-lg flex items-center justify-center">

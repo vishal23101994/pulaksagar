@@ -163,12 +163,59 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden relative z-30 bg-gradient-to-b from-[#FFF1B8] to-[#D4AF37] border-t border-[#8B6F1E]"
+              className="md:hidden relative z-30 bg-gradient-to-b from-[#FFF1B8] to-[#D4AF37] border-t border-[#8B6F1E] max-h-[80vh] overflow-y-auto"
             >
-              <div className="flex flex-col px-6 py-6 gap-5 text-[#3A2F0B] font-semibold">
+              <div className="flex flex-col px-6 py-6 gap-4 text-[#3A2F0B] font-semibold">
 
                 <MobileItem href="/" label="Home" onClick={() => setMobileOpen(false)} />
                 <MobileItem href="/about" label="About" onClick={() => setMobileOpen(false)} />
+
+                {/* MEDIA DROPDOWN */}
+                <button
+                  onClick={() => setMobileMediaOpen(!mobileMediaOpen)}
+                  className="flex items-center justify-between text-left"
+                >
+                  <span>Media</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition ${mobileMediaOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {mobileMediaOpen && (
+                  <div className="pl-4 flex flex-col gap-3 text-sm">
+                    <MobileItem href="/media/pravachan" label="Pravachan" onClick={() => setMobileOpen(false)} />
+                    <MobileItem href="/media/bhajan" label="Bhajan" onClick={() => setMobileOpen(false)} />
+                  </div>
+                )}
+
+                {/* ORGANIZATION DROPDOWN */}
+                <button
+                  onClick={() => setMobileOrgOpen(!mobileOrgOpen)}
+                  className="flex items-center justify-between text-left"
+                >
+                  <span>Organization</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition ${mobileOrgOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {mobileOrgOpen && (
+                  <div className="pl-4 flex flex-col gap-3 text-sm">
+                    <MobileItem
+                      href="/organization/jinsharnam-tirth"
+                      label="Jinsharnam Tirth"
+                      onClick={() => setMobileOpen(false)}
+                    />
+                    <MobileItem
+                      href="/organization/pulak-manch"
+                      label="Pulak Manch"
+                      onClick={() => setMobileOpen(false)}
+                    />
+                  </div>
+                )}
+
                 <MobileItem href="/gallery" label="Gallery" onClick={() => setMobileOpen(false)} />
                 <MobileItem href="/achievements" label="Achievements" onClick={() => setMobileOpen(false)} />
                 <MobileItem href="/sahitya" label="Sahitya" onClick={() => setMobileOpen(false)} />

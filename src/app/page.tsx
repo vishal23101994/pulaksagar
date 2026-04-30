@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import LatestUpdatesSection from "../components/layout/LatestUpdatesSection";
 import AdvertisementCards from "../components/layout/AdvertisementCards";
+import PulakSagarLiveSection from "../components/layout/PulakSagarLiveSection";
 
 export default function Home() {
   const [latestVideos, setLatestVideos] = useState<any[]>([]);
@@ -25,6 +26,7 @@ export default function Home() {
   return (
     <main className="bg-[#0F0F0F] text-[#F5F5F5]">
       <HeroSection />
+      <PulakSagarLiveSection />
       <DivineMessageSection />
       <OrganizationsSection />
       <PulakSagarHighlights />
