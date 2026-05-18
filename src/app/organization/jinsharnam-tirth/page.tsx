@@ -123,7 +123,7 @@ export default function JinsharnamTirthPage() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const RoyalSection = ({ children }: { children: React.ReactNode }) => (
-    <div className="relative py-24 px-6 
+    <div className="relative py-14 sm:py-18 lg:py-24 px-4 sm:px-6 lg:px-8
       bg-gradient-to-b 
       from-[#000000] 
       via-[#050505] 
@@ -134,7 +134,8 @@ export default function JinsharnamTirthPage() {
       {/* Golden Aura Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 
-        w-[900px] h-[400px] 
+        w-[320px] sm:w-[600px] lg:w-[900px]
+        h-[200px] sm:h-[300px] lg:h-[400px] 
         bg-[#FFD97A]/15 blur-[160px] rounded-full" />
       </div>
 
@@ -153,21 +154,24 @@ export default function JinsharnamTirthPage() {
   );
 
   return (
-    <section className="relative text-amber-100 min-h-screen overflow-x-hidden 
-    bg-gradient-to-b from-[#000000] via-[#050505] to-[#0A0A0A]">
+    <section className="relative text-amber-100 min-h-[100svh] overflow-x-hidden bg-gradient-to-b from-[#000000] via-[#050505] to-[#0A0A0A]">
       {/* Soft Golden Glow Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px]
-        bg-[#FFD97A]/20 blur-[150px] rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[320px] sm:w-[600px] lg:w-[900px] h-[220px] sm:h-[350px] lg:h-[500px] bg-[#FFD97A]/20 blur-[150px] rounded-full" />
       </div>
       {/* 🌅 HERO SECTION — PREMIUM CLEAR IMAGE */}
-      <div className="relative w-full h-[650px] overflow-hidden">
+      <div className="relative w-full h-[520px] sm:h-[620px] lg:h-[750px] overflow-hidden">
 
         {/* Background Image */}
         <img
           src="/images/img13.jpg"
           alt="Jinsharnam Tirth"
-          className="absolute inset-0 w-full h-full object-cover scale-105"
+          className="
+            absolute inset-0
+            w-full h-full
+            object-cover
+            scale-100 sm:scale-105
+          "
         />
 
         {/* Dark Gradient Overlay (lighter so image visible) */}
@@ -179,15 +183,17 @@ export default function JinsharnamTirthPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-6">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 sm:px-6 lg:px-8">
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl font-serif font-bold 
-            bg-gradient-to-r from-[#FFD97A] via-[#FFF1B8] to-[#FFD97A] 
-            bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(255,215,120,0.8)]"
+            className="
+              text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight
+              bg-gradient-to-r from-[#FFD97A] via-[#FFF1B8] to-[#FFD97A] 
+              bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(255,215,120,0.8)]
+            "
           >
             Jinsharnam Tirth Dham
           </motion.h1>
@@ -196,7 +202,7 @@ export default function JinsharnamTirthPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="mt-6 text-lg md:text-xl text-amber-100/90 max-w-2xl"
+            className="mt-6 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-2 text-amber-100/90 max-w-2xl"
           >
             A serene sanctuary of peace and devotion guided by  
             Acharya Shri Pulak Sagar Ji Maharaj
@@ -212,11 +218,14 @@ export default function JinsharnamTirthPage() {
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
               }
             }}
-            className="mt-100 px-8 py-2 text-lg font-semibold rounded-full
-            bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400
-            text-black shadow-[0_20px_60px_rgba(251,191,36,0.6)]
-            hover:shadow-[0_25px_80px_rgba(251,191,36,0.9)]
-            transition-all duration-500 relative overflow-hidden"
+            className="
+              mt-10 sm:mt-14 lg:mt-20 px-5 sm:px-7 lg:px-8 py-2.5 sm:py-3
+              text-sm sm:text-base lg:text-lg font-semibold rounded-full
+              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400
+              text-black shadow-[0_20px_60px_rgba(251,191,36,0.6)]
+              hover:shadow-[0_25px_80px_rgba(251,191,36,0.9)]
+              transition-all duration-500 relative overflow-hidden
+            "
           >
             <span className="relative z-10">🙏 Donate Now</span>
 

@@ -396,7 +396,7 @@ export default function JinsharnamMediaSpiritual() {
                 className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium ${
                   selectedIndex === 0
                     ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                    : "bg-[#FFF3E0] hover:bg-[#F8E1A1] text-white"
+                    : "bg-[#FFF3E0] hover:bg-[#F8E1A1] text-black"
                 }`}
               >
                 <ChevronLeft size={18} /> Previous
@@ -412,7 +412,7 @@ export default function JinsharnamMediaSpiritual() {
                 className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium ${
                   selectedIndex === videoList.length - 1
                     ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                    : "bg-[#FFF3E0] hover:bg-[#F8E1A1] text-white"
+                    : "bg-[#FFF3E0] hover:bg-[#F8E1A1] text-black"
                 }`}
               >
                 Next <ChevronRight size={18} />
