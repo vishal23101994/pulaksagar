@@ -107,98 +107,190 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Explore Section */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-6 gap-x-6 text-sm border-b border-black/30 pb-6">
+        {/* Elegant Footer Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr_1fr] gap-8 py-4">
 
-          {footerLinks.map((item, idx) => (
-            <div key={idx}>
-              {item.subLinks ? (
-                <>
-                  <p className="font-bold text-black mb-3 tracking-wide drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
-                    {item.name}
-                  </p>
-                  <ul className="space-y-2">
-                    {item.subLinks.map((sub, i) => (
-                      <li key={i}>
-                        <Link href={sub.path} className="transition-all duration-300 
-                                                         hover:text-black 
-                                                         hover:font-semibold
-                                                         hover:tracking-wide">
-                          {sub.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <Link href={item.path} className="hover:text-black transition duration-300 hover:pl-1 block">
-                  {item.name}
-                </Link>
-              )}
+          {/* QUICK LINKS */}
+          <div
+            className="
+            bg-white/10
+            backdrop-blur-md
+            rounded-3xl
+            p-8
+            border border-[#8B6F1E]/40
+            shadow-[0_12px_40px_rgba(0,0,0,.18)]
+          "
+          >
+            <h3 className="text-2xl font-serif font-bold mb-6 text-black">
+              Quick Links
+            </h3>
+
+            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+
+              {footerLinks.map((item, idx) => (
+                <div key={idx}>
+
+                  {item.subLinks ? (
+                    <>
+                      <h4 className="font-semibold mb-3">
+                        {item.name}
+                      </h4>
+
+                      <ul className="space-y-2">
+
+                        {item.subLinks.map((sub, i) => (
+                          <li key={i}>
+                            <Link
+                              href={sub.path}
+                              className="
+                                inline-block
+                                transition
+                                hover:translate-x-2
+                                hover:text-[#6D5200]
+                              "
+                            >
+                              ✦ {sub.name}
+                            </Link>
+                          </li>
+                        ))}
+
+                      </ul>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      className="
+                        inline-block
+                        transition
+                        hover:translate-x-2
+                        hover:text-[#6D5200]
+                      "
+                    >
+                      ✦ {item.name}
+                    </Link>
+                  )}
+
+                </div>
+              ))}
+
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Contact + Social */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 border-b border-[#2A2006]/40 pb-6 text-center md:text-left">
 
-          <div className="text-m text-black font-medium space-y-4 w-full md:w-1/2">
+          {/* SOCIAL */}
+          <div
+            className="
+              bg-gradient-to-b
+              from-[#F7E1A5]/40
+              to-[#D5AC46]/20
+              rounded-3xl
+              p-8
+              text-center
+              border border-[#8B6F1E]/30
+              shadow-xl
+            "
+          >
 
-            <p className="flex flex-col sm:flex-row items-start gap-3 leading-relaxed">
-              <FaMapMarkerAlt className="text-black mt-1 flex-shrink-0" />
-              <span>
-                <span className="font-semibold">
-                  Central Office & Media Partner - Jinsharnam Media
+            <h3 className="text-2xl font-serif font-bold mb-5">
+              Connect With Us
+            </h3>
+
+            <p className="leading-8 text-sm mb-8">
+              Spreading eternal wisdom,
+              discipline and the divine
+              light of Jain Dharma.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+
+              {socialLinks.map((s, i) => (
+                <Link
+                  key={i}
+                  href={s.url}
+                  target="_blank"
+                  className="
+                    w-14 h-14
+                    rounded-full
+                    bg-black
+                    flex
+                    items-center
+                    justify-center
+                    text-2xl
+                    transition-all
+                    duration-500
+                    hover:-translate-y-2
+                    hover:rotate-6
+                    hover:shadow-[0_0_30px_rgba(255,215,0,.6)]
+                  "
+                >
+                  {s.icon}
+                </Link>
+              ))}
+
+            </div>
+
+          </div>
+
+
+          {/* CENTRAL OFFICE */}
+          <div
+            className="
+              bg-white/10
+              backdrop-blur-md
+              rounded-3xl
+              p-8
+              border border-[#8B6F1E]/40
+              shadow-[0_12px_40px_rgba(0,0,0,.18)]
+            "
+          >
+
+            <h3 className="text-2xl font-serif font-bold mb-6">
+              Central Office
+            </h3>
+
+            <div className="space-y-6">
+
+              <div className="flex gap-4">
+
+                <div className="w-14 h-8 rounded-full bg-black text-[#E6C97A]
+                flex items-center justify-center">
+                  <FaMapMarkerAlt />
+                </div>
+
+                <div className="leading-8">
+
+                  <div className="font-bold text-[#7A5600]">
+                    Jinsharnam Media
+                  </div>
+
+                  Vatsalya Bhawan<br />
+                  P-75, Street No. 5, 
+                  Bihari Colony Extension, 
+                  Shahdara, Delhi – 110032<br />
+                  India
+
+                </div>
+
+              </div>
+
+              <div className="flex gap-4 items-center">
+                <FaPhoneAlt />
+                +91 9810900699
+              </div>
+
+              <div className="flex gap-4 items-center">
+                <FaEnvelope />
+                <span className="break-all">
+                  jinsharnam@gmail.com
                 </span>
-                <br />
-                Vatsalya Bhawan
-                <br />
-                P-75, Street No 5, Bihari Colony Extension,
-                <br />
-                Bihari Colony, Shahdara
-                <br />
-                Delhi – 110032
-                <br />
-                India
-              </span>
-            </p>
+              </div>
 
-            <p className="flex items-center justify-center md:justify-start gap-3">
-              <FaPhoneAlt className="text-black" />
-              +91 9810900699, 9810900042
-            </p>
-
-            <p className="flex items-center justify-center md:justify-start gap-3">
-              <FaEnvelope className="text-black" />
-              jinsharnam@gmail.com
-            </p>
+            </div>
 
           </div>
 
-          {/* Social Icons (Brand Colors Restored) */}
-          <div className="flex flex-wrap justify-center md:justify-end gap-6 w-full md:w-1/2">
-            {socialLinks.map((s, i) => (
-              <Link
-                key={i}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  text-lg md:text-2xl
-                  bg-black border border-black
-                  rounded-full
-                  p-2 md:p-3
-                  transition-all duration-300
-                  shadow-md
-                  hover:scale-110
-                  hover:shadow-[0_0_20px_rgba(0,0,0,0.6)]
-                "
-              >
-                {s.icon}
-              </Link>
-            ))}
-          </div>
         </div>
+        
       </div>
       {/* Full Width Copyright */}
       <div className="relative z-20 w-full bg-black py-5 text-center">

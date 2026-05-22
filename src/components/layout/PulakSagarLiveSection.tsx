@@ -93,7 +93,7 @@ export default function PulakSagarLiveSection() {
                 Rashtrasant Manogyacharya
               </p>
 
-              <h3 className="text-3xl sm:text-4xl md:text-6xl font-serif text-[#2E1B00] leading-tight mb-6 md:mb-8">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-[#2E1B00] leading-tight mb-6 md:mb-8">
                 {live.title}
               </h3>
 
