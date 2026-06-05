@@ -2,12 +2,21 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import LatestUpdatesSection from "../components/layout/LatestUpdatesSection";
 import AdvertisementCards from "../components/layout/AdvertisementCards";
 import PulakSagarLiveSection from "../components/layout/PulakSagarLiveSection";
 
 export default function Home() {
+  
+  const [selectedAdImage, setSelectedAdImage] = useState<{
+    src: string;
+    title: string;
+  } | null>(null);
+
+  const [adZoom, setAdZoom] = useState(1);
   const [latestVideos, setLatestVideos] = useState<any[]>([]);
   const [selectedVideoIndex, setSelectedVideoIndex] =
     useState<number | null>(null);
@@ -30,6 +39,12 @@ export default function Home() {
       <DivineMessageSection />
       <OrganizationsSection />
       <PulakSagarHighlights />
+      <PrintPublicationContactSection
+        selectedAdImage={selectedAdImage}
+        setSelectedAdImage={setSelectedAdImage}
+        adZoom={adZoom}
+        setAdZoom={setAdZoom}
+      />
       <LatestPravachanSection
         latestVideos={latestVideos}
         setSelectedVideoIndex={setSelectedVideoIndex}
@@ -674,5 +689,173 @@ function VideoModal({
         </div>
       </div>
     </div>
+  );
+}
+
+function PrintPublicationContactSection({
+  selectedAdImage,
+  setSelectedAdImage,
+  adZoom,
+  setAdZoom,
+}: {
+  selectedAdImage: { src: string; title: string } | null;
+  setSelectedAdImage: React.Dispatch<
+    React.SetStateAction<{ src: string; title: string } | null>
+  >;
+  adZoom: number;
+  setAdZoom: React.Dispatch<React.SetStateAction<number>>;
+}) {
+  return (
+    <section className="relative py-32 bg-gradient-to-b from-[#FFE6A6] via-[#FFD97A] to-[#FFE6A6]">
+
+      {/* Existing Section Content */}
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-5xl font-serif text-[#6A0000]">
+            Contact for Advertisement
+          </h2>
+
+          {/* Elegant Divider */}
+          <div className="mt-4 flex justify-center">
+            <div className="w-32 h-[3px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent rounded-full" />
+          </div>
+        </motion.div>
+        <div className="relative rounded-[48px] p-12 bg-white/70 backdrop-blur border border-[#D4AF37] shadow-[0_40px_120px_rgba(212,175,55,0.55)]">
+
+          <div className="relative grid md:grid-cols-2 gap-16 items-stretch">
+
+            {/* CLICKABLE IMAGE */}
+            <div className="relative h-full flex items-center justify-center">
+              <div className="absolute inset-0 rounded-3xl bg-[#FFD97A] blur-3xl opacity-80" />
+
+              <div
+                onClick={() => {
+                  setAdZoom(1);
+                  setSelectedAdImage({
+                    src: "/images/pulak-graphics1.jpeg",
+                    title: "Pulak Graphics – Printing & Publication",
+                  });
+                }}
+                className="relative w-full h-[200px] md:h-[300px] lg:h-[350px]
+                          rounded-3xl overflow-hidden border-4 border-[#B8860B]
+                          bg-white shadow-[0_0_70px_rgba(255,217,122,0.9)]
+                          cursor-pointer group"
+              >
+                <Image
+                  src="/images/pulak-graphics1.jpeg"
+                  alt="Pulak Graphics – Printing & Publication"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* CONTACT CARD */}
+            <div className="relative h-full flex items-center justify-center">
+              <div className="absolute inset-0 rounded-3xl bg-[#FFD97A] blur-3xl opacity-80" />
+
+              <div
+                onClick={() => {
+                  setAdZoom(1);
+                  setSelectedAdImage({
+                    src: "/images/advertisement/image2.jpeg",
+                    title: "Pulak Graphics – Printing & Publication",
+                  });
+                }}
+                className="relative w-full h-[200px] md:h-[300px] lg:h-[350px]
+                          rounded-3xl overflow-hidden border-4 border-[#B8860B]
+                          bg-white shadow-[0_0_70px_rgba(255,217,122,0.9)]
+                          cursor-pointer group"
+              >
+                <Image
+                  src="/images/advertisement/image2.jpeg"
+                  alt="Pulak Graphics – Printing & Publication"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* IMAGE MODAL */}
+      {selectedAdImage &&
+        createPortal(
+          <div className="fixed inset-0 z-[2147483647] bg-black/90 backdrop-blur-lg flex items-center justify-center">
+
+            {/* TOOLBAR */}
+            <div
+              className="
+                fixed top-6 right-6 z-[2147483648]
+                flex items-center gap-3
+                bg-black/60 backdrop-blur-md
+                border border-white/20
+                px-3 py-2 rounded-full
+                shadow-2xl
+              "
+            >
+              <button
+                onClick={() => setAdZoom((z) => Math.min(z + 0.2, 4))}
+                className="w-10 h-10 rounded-full bg-amber-400 text-black font-bold hover:scale-110 transition"
+              >
+                +
+              </button>
+
+              <button
+                onClick={() => setAdZoom((z) => Math.max(z - 0.2, 1))}
+                className="w-10 h-10 rounded-full bg-amber-400 text-black font-bold hover:scale-110 transition"
+              >
+                −
+              </button>
+
+              <button
+                onClick={() => setAdZoom(1)}
+                className="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition"
+              >
+                Reset
+              </button>
+
+              <button
+                onClick={() => setSelectedAdImage(null)}
+                className="w-10 h-10 rounded-full bg-red-500 text-white hover:bg-red-600 transition"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* IMAGE */}
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.35 }}
+              className="flex flex-col items-center max-w-[90vw] max-h-[90vh]"
+            >
+              <img
+                src={selectedAdImage.src}
+                alt={selectedAdImage.title}
+                style={{
+                  transform: `scale(${adZoom})`,
+                  transition: "transform 0.3s ease",
+                }}
+                className="max-h-[80vh] object-contain rounded-2xl shadow-2xl"
+              />
+
+              <p className="text-amber-200 text-lg mt-6 tracking-wide text-center">
+                {selectedAdImage.title}
+              </p>
+            </motion.div>
+          </div>,
+          document.body
+        )}
+    </section>
   );
 }
